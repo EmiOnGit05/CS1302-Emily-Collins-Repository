@@ -10,17 +10,17 @@ class TestConstructor {
 
 	@Test
 	void testNullName() {
-		assertThrows(IllegalArgumentException.class, ()->{new Student(null);});
+		assertThrows(IllegalArgumentException.class, ()->{new Student(null, 97);});
 	}
 
 	@Test
 	void testNameTooShort() {
-		assertThrows(IllegalArgumentException.class, ()->{new Student("12");});
+		assertThrows(IllegalArgumentException.class, ()->{new Student("12", 98);});
 	}
 	
 	@Test
 	void testMinimumLengthName() {
-		Student result = new Student("123");
+		Student result = new Student("123", 98);
 		
 		assertEquals("123", result.getName(), "checking the name of the student");
 	}
