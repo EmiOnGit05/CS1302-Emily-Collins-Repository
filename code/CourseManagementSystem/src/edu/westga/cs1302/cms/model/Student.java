@@ -15,6 +15,7 @@ public class Student {
 	 * @postcondition getName() == name
 	 * 
 	 * @param name the name of the new student
+	 * @param grade the grade of the new student
 	 * 
 	 * @throws IllegalArgumentException when preconditions are violated
 	 */

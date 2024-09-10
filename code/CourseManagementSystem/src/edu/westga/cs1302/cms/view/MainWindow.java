@@ -68,6 +68,8 @@ public class MainWindow {
     	Student student = this.students.getSelectionModel().getSelectedItem();
 		if (student != null) {
 			this.students.getItems().remove(student);
+			int average = this.calculateAverages();
+			this.gradeAverageTextArea.setText(Integer.toString(average));
 		} else {
 			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
 			errorPopup.setContentText("No student selected. Unable to remove.");
