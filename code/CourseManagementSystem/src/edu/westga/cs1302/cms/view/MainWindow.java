@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /** Code behind for the MainWindow of the application
@@ -14,10 +15,29 @@ import javafx.scene.control.TextField;
  * @version Fall 2024
  */
 public class MainWindow {
-    @FXML private TextField name;
-    @FXML private ListView<Student> students;
-    @FXML private Label gradeLabel;
-    @FXML private TextField gradeTextField;
+	@FXML
+	private TextField name;
+	
+	@FXML
+	private ListView<Student> students;
+	
+	@FXML
+	private Label gradeLabel;
+	
+	@FXML
+    private Label studentGradeLabel;
+	
+	@FXML
+	private Label gradeAverageLabel;
+	
+	@FXML
+	private TextField gradeTextField;
+
+	@FXML
+	private TextArea gradeAverageTextArea;
+
+    @FXML
+    private TextArea studentGradeTextArea;
 
     @FXML
     void addStudent(ActionEvent event) {
@@ -26,6 +46,10 @@ public class MainWindow {
 		try {
 			Student student = new Student(studentName, studentGrade);
 			this.students.getItems().add(student);
+			int average = this.calculateAverages();
+			this.gradeAverageTextArea.setText(Integer.toString(average));
+			this.gradeTextField.clear();
+			this.name.clear();
 		} catch (NumberFormatException ex) {
 			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
 			errorPopup.setContentText(
@@ -50,12 +74,28 @@ public class MainWindow {
 			errorPopup.showAndWait();
 		}
     }
+    
+    @FXML
+    private void setUpChangeListeners() {
+    	this.students.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+    		this.studentGradeTextArea.setText(Integer.toString(newValue.getGrade()));
+    	});
+    }
+    
+    private int calculateAverages() {
+    	double total = 0.0;
+    	for (Student currStudent : this.students.getItems()) {
+    		total += currStudent.getGrade();
+    	}
+    	total = total / this.students.getItems().size();
+    	return (int) total;
+    }
 
     @FXML
     void initialize() {
         assert this.name != null : "fx:id=\"name\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert this.students != null : "fx:id=\"students\" was not injected: check your FXML file 'MainWindow.fxml'.";
-      
+        this.setUpChangeListeners();
     }
 
 }
