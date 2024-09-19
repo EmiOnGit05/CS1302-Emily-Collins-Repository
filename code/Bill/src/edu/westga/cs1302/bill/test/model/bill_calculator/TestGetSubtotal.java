@@ -22,5 +22,21 @@ class TestGetSubtotal {
 		double subtotal = BillCalculator.getSubTotal(bill.getItems());
 		assertEquals(381.5576, subtotal);
 	}
+	
+	@Test
+	void testGetSubtotalOneItem() {
+		BillItem itemOne = new BillItem("Apple", 12.02);
+		Bill bill = new Bill();
+		bill.addItem(itemOne);
+		double subtotal = BillCalculator.getSubTotal(bill.getItems());
+		assertEquals(12.02, subtotal);
+	}
+	
+	@Test
+	void testGetSubtotalNoItems() {
+		Bill bill = new Bill();
+		double subtotal = BillCalculator.getSubTotal(bill.getItems());
+		assertEquals(0.00, subtotal);
+	}
 
 }
