@@ -15,4 +15,12 @@ public class BillCalculator {
 	public static double getTax(BillItem[] items) {
 		return BillCalculator.getSubTotal(items) * 0.1;
 	}
+	
+	public static double getTip(BillItem[] items) {
+		return BillCalculator.getSubTotal(items) * 0.2;
+	}
+	
+	public static double getTotal(BillItem[] items) {
+		return BillCalculator.getSubTotal(items) + BillCalculator.getTax(items) + BillCalculator.getTip(items);
+	}
 }
