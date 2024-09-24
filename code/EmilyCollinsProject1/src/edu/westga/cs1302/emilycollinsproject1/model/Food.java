@@ -8,8 +8,9 @@ package edu.westga.cs1302.emilycollinsproject1.model;
  */
 
 public class Food {
-	private String name;
-	private FoodType type;
+	private final String name;
+	private final FoodType type;
+	private int quantity;
 
 	/**
 	 * Constructor for food object.
@@ -18,8 +19,15 @@ public class Food {
 	 * @param type the type of food it is
 	 */
 	public Food(String name, FoodType type) {
+		if (name.isBlank() || name.isEmpty()) {
+			throw new IllegalArgumentException("Name cannot be null!");
+		}
+		if (type == null) {
+			throw new IllegalArgumentException("Type cannot be null!");
+		}
 		this.name = name;
 		this.type = type;
+		this.quantity = 0;
 	}
 	
 	/**
@@ -38,5 +46,28 @@ public class Food {
 	 */
 	public FoodType getType() {
 		return this.type;
+	}
+	
+	/**
+	 * Getter for quantity.
+	 * 
+	 * @return this.quantity - the quantity of this food in the pantry
+	 */
+	public int getQuantity() {
+		return this.quantity;
+	}
+	
+	/**
+	 * Setter for quantity.
+	 * 
+	 * @param quantity the quantity to set the food to
+	 */
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	@Override
+	public String toString() {
+		return this.name + " - " + Integer.toString(this.quantity);
 	}
 }
