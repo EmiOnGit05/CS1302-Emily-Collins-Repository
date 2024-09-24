@@ -2,7 +2,6 @@ package edu.westga.cs1302.emilycollinsproject1.view;
 
 import edu.westga.cs1302.emilycollinsproject1.model.Food;
 import edu.westga.cs1302.emilycollinsproject1.model.FoodType;
-import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +38,18 @@ public class MainWindow {
 
 	@FXML
 	private Button addFoodButton;
+	
+	@FXML
+    private Button decreaseQuantityButton;
+	
+	@FXML
+    private Button increaseQuantityButton;
+	
+	@FXML
+    private Label quantityLabel;
+
+    @FXML
+    private TextField quantityTextField;
 	
 	/**
 	 * Constructor for MainWindow.
