@@ -2,7 +2,11 @@ package edu.westga.cs1302.emilycollinsproject1.view;
 
 import edu.westga.cs1302.emilycollinsproject1.model.Food;
 import edu.westga.cs1302.emilycollinsproject1.model.FoodType;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -35,4 +39,55 @@ public class MainWindow {
 
 	@FXML
 	private Button addFoodButton;
+	
+	/**
+	 * Constructor for MainWindow.
+	 * 
+	 * @postcondition this.foodTypeComboBox is initialized
+	 */
+	public MainWindow() {
+		this.foodTypeComboBox = new ComboBox<FoodType>();
+		//this.foodTypeComboBox.setItems((FXCollections.observableArrayList(FoodType.values())));
+	}
+	
+	/**
+	 * Adds food object if not existing, otherwise adjusts quantity. 
+	 * 
+	 * @param event event that triggered method
+	 */
+	@FXML
+	public void addFood(ActionEvent event) {
+		try {
+			Food food = new Food(this.foodNameTextField.getText(), this.foodTypeComboBox.getValue());
+			if (this.checkFood(food) == -1) {
+				food.addOneQuantity();
+				this.pantryListView.getItems().add(food);
+				System.out.println("Food added!");
+			} else {
+				this.pantryListView.getItems().get(this.checkFood(food)).addOneQuantity();
+			}
+		} catch (IllegalArgumentException ex) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText(ex.getMessage() + " Please try again.");
+			errorPopup.showAndWait();
+		}
+	}
+	
+	/**
+	 * Initialize method
+	 * 
+	 */
+	@FXML
+	public void initialize() {
+		this.foodTypeComboBox.setItems((FXCollections.observableArrayList(FoodType.values())));
+	}
+	
+	private int checkFood(Food food) {
+		for (Food currFood : this.pantryListView.getItems()) {
+			if (currFood.equals(food)) {
+				return this.pantryListView.getItems().indexOf(currFood);
+			}
+		}
+		return -1;
+	}
 }

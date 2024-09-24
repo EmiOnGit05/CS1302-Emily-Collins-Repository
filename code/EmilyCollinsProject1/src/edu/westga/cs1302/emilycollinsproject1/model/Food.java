@@ -66,6 +66,27 @@ public class Food {
 		this.quantity = quantity;
 	}
 	
+	/**
+	 * Adds one value to food's quantity.
+	 */
+	
+	public void addOneQuantity() {
+		this.quantity += 1;
+	}
+	
+	/**
+	 * Checks if a food object is equal by comparing name and type.
+	 * 
+	 * @param food - the food object being compared
+	 * @return true if object is equal, false if not
+	 */
+	public boolean equals(Food food) {
+		if (this.name.equals(food.getName()) && (this.type.equals(food.getType()))) {
+			return true;
+		}
+		return false;
+	}
+	
 	@Override
 	public String toString() {
 		return this.name + " - " + Integer.toString(this.quantity);
