@@ -50,6 +50,9 @@ public class MainWindow {
 
     @FXML
     private TextField quantityTextField;
+    
+    @FXML
+    private Button editQuantityButton;
 	
 	/**
 	 * Constructor for MainWindow.
@@ -71,15 +74,65 @@ public class MainWindow {
 		try {
 			Food food = new Food(this.foodNameTextField.getText(), this.foodTypeComboBox.getValue());
 			if (this.checkFood(food) == -1) {
-				food.addOneQuantity();
+				food.increaseQuantity();
 				this.pantryListView.getItems().add(food);
 				System.out.println("Food added!");
+				this.pantryListView.refresh();
 			} else {
-				this.pantryListView.getItems().get(this.checkFood(food)).addOneQuantity();
+				this.pantryListView.getItems().get(this.checkFood(food)).increaseQuantity();
+				this.pantryListView.refresh();
 			}
 		} catch (IllegalArgumentException ex) {
 			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
 			errorPopup.setContentText(ex.getMessage() + " Please try again.");
+			errorPopup.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void setQuantity(ActionEvent event) {
+		try {
+			this.pantryListView.getSelectionModel().getSelectedItem().setQuantity(Integer.parseInt(this.quantityTextField.getText()));
+			this.pantryListView.refresh();
+		} catch (IllegalArgumentException ex) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText(ex.getMessage() + " Please try again.");
+			errorPopup.showAndWait();
+		} catch (NullPointerException ex) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText("Fields cannot be null, please try again.");
+			errorPopup.showAndWait();
+		}
+	}
+	
+	@FXML 
+	public void increaseQuantity() {
+		try {
+			this.pantryListView.getSelectionModel().getSelectedItem().increaseQuantity();
+			this.pantryListView.refresh();
+		} catch (IllegalArgumentException ex) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText(ex.getMessage() + " Please try again.");
+			errorPopup.showAndWait();
+		} catch (NullPointerException ex) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText("Fields cannot be null, please try again.");
+			errorPopup.showAndWait();
+		}
+	}
+	
+	@FXML 
+	public void decreaseQuantity() {
+		try {
+			this.pantryListView.getSelectionModel().getSelectedItem().decreaseQuantity();
+			this.pantryListView.refresh();
+		} catch (IllegalArgumentException ex) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText(ex.getMessage() + " Please try again.");
+			errorPopup.showAndWait();
+		} catch (NullPointerException ex) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText("Fields cannot be null, please try again.");
 			errorPopup.showAndWait();
 		}
 	}

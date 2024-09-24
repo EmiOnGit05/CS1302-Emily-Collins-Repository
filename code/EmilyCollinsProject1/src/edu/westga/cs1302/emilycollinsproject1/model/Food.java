@@ -63,6 +63,9 @@ public class Food {
 	 * @param quantity the quantity to set the food to
 	 */
 	public void setQuantity(int quantity) {
+		if (quantity < 0) {
+			throw new IllegalArgumentException("Quantity must be above 0!");
+		}
 		this.quantity = quantity;
 	}
 	
@@ -70,8 +73,16 @@ public class Food {
 	 * Adds one value to food's quantity.
 	 */
 	
-	public void addOneQuantity() {
+	public void increaseQuantity() {
 		this.quantity += 1;
+	}
+	
+	public void decreaseQuantity() {
+		if (this.quantity > 0) {
+			this.quantity -= 1;
+		} else {
+			throw new IllegalArgumentException("Quantity cannot go below 0!");
+		}
 	}
 	
 	/**
