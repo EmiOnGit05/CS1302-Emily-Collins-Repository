@@ -28,7 +28,7 @@
          </font>
       </Label>
       <ComboBox fx:id="foodTypeComboBox" layoutX="370.0" layoutY="128.0" prefHeight="46.0" prefWidth="354.0" />
-      <Button fx:id="addFoodButton" layoutX="470.0" layoutY="209.0" mnemonicParsing="false" onAction="#addFood" prefHeight="46.0" prefWidth="166.0" text="Add Food">
+      <Button fx:id="addFoodButton" layoutX="469.0" layoutY="188.0" mnemonicParsing="false" onAction="#addFood" prefHeight="46.0" prefWidth="166.0" text="Add Food">
          <font>
             <Font size="23.0" />
          </font>
@@ -52,6 +52,11 @@
       <Button fx:id="editQuantityButton" layoutX="466.0" layoutY="435.0" mnemonicParsing="false" onAction="#setQuantity" prefHeight="38.0" prefWidth="174.0" text="Set Quantity">
          <font>
             <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteFoodButton" layoutX="469.0" layoutY="248.0" mnemonicParsing="false" onAction="#addFood" prefHeight="46.0" prefWidth="166.0" text="Remove Food">
+         <font>
+            <Font size="20.0" />
          </font>
       </Button>
    </children>
