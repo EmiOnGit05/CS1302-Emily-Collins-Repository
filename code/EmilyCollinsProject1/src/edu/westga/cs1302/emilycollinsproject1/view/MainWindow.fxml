@@ -54,7 +54,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="deleteFoodButton" layoutX="469.0" layoutY="248.0" mnemonicParsing="false" onAction="#addFood" prefHeight="46.0" prefWidth="166.0" text="Remove Food">
+      <Button fx:id="deleteFoodButton" layoutX="469.0" layoutY="248.0" mnemonicParsing="false" onAction="#removeFood" prefHeight="46.0" prefWidth="166.0" text="Remove Food">
          <font>
             <Font size="20.0" />
          </font>
