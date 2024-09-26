@@ -2,6 +2,7 @@ package edu.westga.cs1302.emilycollinsproject1.view;
 
 import edu.westga.cs1302.emilycollinsproject1.model.Food;
 import edu.westga.cs1302.emilycollinsproject1.model.FoodType;
+import edu.westga.cs1302.emilycollinsproject1.utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -112,7 +113,7 @@ public class MainWindow {
 	}
 	
 	@FXML 
-	public void increaseQuantity() {
+	public void increaseQuantity(ActionEvent event) {
 		try {
 			this.pantryListView.getSelectionModel().getSelectedItem().increaseQuantity();
 			this.pantryListView.refresh();
@@ -128,7 +129,7 @@ public class MainWindow {
 	}
 	
 	@FXML 
-	public void decreaseQuantity() {
+	public void decreaseQuantity(ActionEvent event) {
 		try {
 			this.pantryListView.getSelectionModel().getSelectedItem().decreaseQuantity();
 			this.pantryListView.refresh();
@@ -144,7 +145,7 @@ public class MainWindow {
 	}
 	
 	@FXML
-	public void removeFood() {
+	public void removeFood(ActionEvent event) {
 		try {
 			this.pantryListView.getItems().remove(this.pantryListView.getSelectionModel().getSelectedItem());
 			this.pantryListView.refresh();
@@ -159,6 +160,19 @@ public class MainWindow {
 		}
 	}
 	
+	@FXML
+	public void getTotalQuantity(ActionEvent event) {
+		try {
+			int sum = Utilities.findSum(this.pantryListView.getItems());
+			Alert infoPopup = new Alert(Alert.AlertType.INFORMATION);
+			infoPopup.setContentText("Total quantity of food in pantry: " + sum);
+			infoPopup.showAndWait();
+		} catch (NullPointerException ex) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText("Information is empty/unavailable.");
+			errorPopup.showAndWait();
+		}
+	}
 	
 	/**
 	 * Initialize method
