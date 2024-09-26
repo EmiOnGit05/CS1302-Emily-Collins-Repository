@@ -70,7 +70,7 @@ public class Food {
 	 */
 	public void setQuantity(int quantity) {
 		if (quantity < 0) {
-			throw new IllegalArgumentException("Quantity must be above 0!");
+			throw new IllegalArgumentException("Quantity must be 0 or above!");
 		}
 		this.quantity = quantity;
 	}
