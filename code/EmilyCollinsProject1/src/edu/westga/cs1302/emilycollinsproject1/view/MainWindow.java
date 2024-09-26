@@ -29,6 +29,9 @@ public class MainWindow {
 	private Label foodTypeLabel;
 	
 	@FXML
+    private Label quantityLabel;
+	
+	@FXML
 	private ListView<Food> pantryListView;
 	
 	@FXML
@@ -36,6 +39,9 @@ public class MainWindow {
 	
 	@FXML
 	private TextField foodNameTextField;
+	
+	@FXML
+    private TextField quantityTextField;
 
 	@FXML
 	private Button addFoodButton;
@@ -53,12 +59,6 @@ public class MainWindow {
     private Button viewTotalQuantityButton;
 	
 	@FXML
-    private Label quantityLabel;
-
-    @FXML
-    private TextField quantityTextField;
-    
-    @FXML
     private Button editQuantityButton;
 	
 	/**
@@ -68,13 +68,15 @@ public class MainWindow {
 	 */
 	public MainWindow() {
 		this.foodTypeComboBox = new ComboBox<FoodType>();
-		//this.foodTypeComboBox.setItems((FXCollections.observableArrayList(FoodType.values())));
 	}
 	
 	/**
 	 * Adds food object if not existing, otherwise adjusts quantity. 
 	 * 
+	 * @precondition this.foodNameTextField.getText() != null && this.foodTypeComboBox.getValue() != null
+	 * @postcondition Pantry contains new food item, or existing food items quantity increases.
 	 * @param event event that triggered method
+	 * @throws IllegalArgumentException - throws from Food class if either field is null
 	 */
 	@FXML
 	public void addFood(ActionEvent event) {
@@ -83,7 +85,6 @@ public class MainWindow {
 			if (this.checkFood(food) == -1) {
 				food.increaseQuantity();
 				this.pantryListView.getItems().add(food);
-				System.out.println("Food added!");
 				this.pantryListView.refresh();
 			} else {
 				this.pantryListView.getItems().get(this.checkFood(food)).increaseQuantity();
@@ -96,6 +97,14 @@ public class MainWindow {
 		}
 	}
 	
+	/**
+	 * Sets quantity of a food object from what the user put into quantity text field.
+	 * 
+	 * @precondition this.quantityTextField.getText() != null
+	 * @postcondition - selected food object will have updated quantity
+	 * @param event - editQuantityButton triggered
+	 * @throws IllegalArgumentException if parsing does not work correctly or NullPointerException if fields are null
+	 */
 	@FXML
 	public void setQuantity(ActionEvent event) {
 		try {
@@ -107,11 +116,19 @@ public class MainWindow {
 			errorPopup.showAndWait();
 		} catch (NullPointerException ex) {
 			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
-			errorPopup.setContentText("Fields cannot be null, please try again.");
+			errorPopup.setContentText("Fields cannot be empty, please try again.");
 			errorPopup.showAndWait();
 		}
 	}
 	
+	/**
+	 * Increases the quantity of a food object by 1.
+	 * 
+	 * @precondition this.pantryListView.getSelectionModel().getSelectedItem() != null
+	 * @postcondition this.pantryListView.getSelectionModel().getSelectedItem().getQuantity += 1
+	 * @param event increaseQuantityButton triggered
+	 * @throws IllegalArgumentException or NullPointerException if selected item is null
+	 */
 	@FXML 
 	public void increaseQuantity(ActionEvent event) {
 		try {
@@ -128,6 +145,14 @@ public class MainWindow {
 		}
 	}
 	
+	/**
+	 * Decreases the quantity of a food object by 1.
+	 * 
+	 * @precondition this.pantryListView.getSelectionModel().getSelectedItem() != null
+	 * @postcondition this.pantryListView.getSelectionModel().getSelectedItem().getQuantity -= 1
+	 * @param event decreaseQuantityButton triggered
+	 * @throws IllegalArgumentException or NullPointerException if selected item is null
+	 */
 	@FXML 
 	public void decreaseQuantity(ActionEvent event) {
 		try {
@@ -144,6 +169,14 @@ public class MainWindow {
 		}
 	}
 	
+	/**
+	 * Removes selected food from the pantry.
+	 * 
+	 * @precondition this.pantryListView.getSelectionModel().getSelectedItem() != null
+	 * @postcondition pantry no longer contains selected food object
+	 * @param event deleteFoodButton triggered
+	 * @throws IllegalArgumentException or NullPointerException if selected item is null
+	 */
 	@FXML
 	public void removeFood(ActionEvent event) {
 		try {
@@ -160,6 +193,14 @@ public class MainWindow {
 		}
 	}
 	
+	/**
+	 * Gets the total quantity of all the food objects in the pantry.
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * @param event viewTotalQuantityButton triggered
+	 * @throws NullPointerException if pantry is null
+	 */
 	@FXML
 	public void getTotalQuantity(ActionEvent event) {
 		try {
@@ -176,14 +217,25 @@ public class MainWindow {
 	
 	/**
 	 * Initialize method
-	 * 
 	 */
 	@FXML
 	public void initialize() {
 		this.foodTypeComboBox.setItems((FXCollections.observableArrayList(FoodType.values())));
 	}
 	
+	/**
+	 * Checks the pantry if food object is already in pantry, and if so, returns the index of the object
+	 * 
+	 * @precondition food != null
+	 * @postcondition none
+	 * @param food the food being checked for
+	 * @return returns -1 if food was not found in pantry, returns the index if food was found
+	 * @throws IllegalArgumentException if food is null or invalid
+	 */
 	private int checkFood(Food food) {
+		if (food == null) {
+			throw new IllegalArgumentException("Food is invalid, please try again.");
+		}
 		for (Food currFood : this.pantryListView.getItems()) {
 			if (currFood.equals(food)) {
 				return this.pantryListView.getItems().indexOf(currFood);

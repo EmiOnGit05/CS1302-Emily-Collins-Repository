@@ -15,15 +15,18 @@ public class Food {
 	/**
 	 * Constructor for food object.
 	 * 
+	 * @precondition name != null && type != null
+	 * @postcondition this.name = name && this.type = type && this.quantity = 0
 	 * @param name the name of the food
 	 * @param type the type of food it is
+	 * @throws IllegalArgumentException if name or type is null
 	 */
 	public Food(String name, FoodType type) {
 		if (name.isBlank() || name.isEmpty()) {
-			throw new IllegalArgumentException("Name cannot be null!");
+			throw new IllegalArgumentException("Name cannot be empty!");
 		}
 		if (type == null) {
-			throw new IllegalArgumentException("Type cannot be null!");
+			throw new IllegalArgumentException("Type cannot be empty!");
 		}
 		this.name = name;
 		this.type = type;
@@ -60,7 +63,10 @@ public class Food {
 	/**
 	 * Setter for quantity.
 	 * 
+	 * @precondition quantity > 0
+	 * @postcondition this.quantity = quantity
 	 * @param quantity the quantity to set the food to
+	 * @throws IllegalArgumentException if quantity < 0
 	 */
 	public void setQuantity(int quantity) {
 		if (quantity < 0) {
@@ -71,12 +77,22 @@ public class Food {
 	
 	/**
 	 * Adds one value to food's quantity.
+	 * 
+	 * @precondition none
+	 * @postcondition this.quantity += 1
 	 */
 	
 	public void increaseQuantity() {
 		this.quantity += 1;
 	}
 	
+	/**
+	 * Decreases one value from food's quantity.
+	 * 
+	 * @precondition this.quantity > 0
+	 * @postcondition this.quantity -= 1
+	 * @throws IllegalArgumentException if quantity <= 0
+	 */
 	public void decreaseQuantity() {
 		if (this.quantity > 0) {
 			this.quantity -= 1;
@@ -88,6 +104,8 @@ public class Food {
 	/**
 	 * Checks if a food object is equal by comparing name and type.
 	 * 
+	 * @precondition none (null checked in constructor)
+	 * @postcondition none
 	 * @param food - the food object being compared
 	 * @return true if object is equal, false if not
 	 */
