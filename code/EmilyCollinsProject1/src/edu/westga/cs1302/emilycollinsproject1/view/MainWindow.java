@@ -49,6 +49,9 @@ public class MainWindow {
     private Button deleteFoodButton;
 	
 	@FXML
+    private Button viewTotalQuantityButton;
+	
+	@FXML
     private Label quantityLabel;
 
     @FXML
