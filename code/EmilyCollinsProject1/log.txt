@@ -1,0 +1,179 @@
+commit 086a7d27db5533853e93d0adb1c85d12ee95b9af
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 25 23:58:54 2024 -0400
+
+    ----JUnit Testing----
+    
+    I somehow overlooked adding tests for needed methods, so added in here. Added tests for Food's decreaseQuantity(), increaseQuantity(), equals(), setQuantity(), and the constructor. Also tested the utilities findSum().
+
+commit 24b6024f13e9e45e7f2a65841e6d5cd77c352ee2
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 25 23:15:12 2024 -0400
+
+    ----Specifications + Polishing----
+    
+    Went through and updated all specifications for methods and classes. Also tested everything and looked over code to make sure it was clean, organized, and finished.
+
+commit 873cc816a67e80449a84eb1b36f76fbb90453670
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 25 21:51:14 2024 -0400
+
+    ----Connect Logic and UI for Updating Quantity----
+    
+    Added method in MainWindow that implemented the previously created method. When the button is pressed now, the program will show a popup that informs the user of how many items they have in the pantry currently.
+
+commit da263bf8471e5fb7704bafe058404e64ce52c5f2
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 25 21:38:30 2024 -0400
+
+    ----Business Logic for Counting Pantry----
+    
+    Created a utilities package with a utilities class that holds a static method for calculating the total quantity of all food items in a pantry. It may throw a NullPointerException if list is null.
+
+commit f2bd36e4bdf73cc3454a4af6241d0b55c4af6be7
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 25 21:26:03 2024 -0400
+
+    ----Implementing UI for Counting Pantry----
+    
+    Added a button for viewing total quantity to the UI.
+
+commit dbe6848db872d4d7aaf0646a307135a9b6cdc94f
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 25 18:07:14 2024 -0400
+
+    ----Implement UI for Removing Food----
+    
+    Added implementation for removing the selected food item from the pantry.
+
+commit 1c3db21f49bc2aec3561a543f48c60deeaecfc7a
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 25 17:57:00 2024 -0400
+
+    ----UI for Removing Food----
+    
+    Added a 'Remove Food' button for removing selected food item.
+
+commit d691b88317bd23dc066d8acdfed8e9b7fef53984
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Sep 24 19:45:49 2024 -0400
+
+    ----Business Logic for Updating Quantity of Food----
+    
+    Added and implemented methods that allowed setting the quantity, incrementing the quantity, and decrementing the quantity of a certain food in the pantry. Methods will show alert popups if no item is selected or a field is null.
+
+commit 28c0e8a7401b09b9db735359511a53cf04b405c2
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Sep 24 14:55:26 2024 -0400
+
+    ----Adding UI----
+    
+    Added label, textfield, and button for setting a quantity. Also added a + and - button for decreasing and increasing the quantity of a given food object.
+
+commit 9e3c89283e7c59e34d4b0c40931ea92a5908fb45
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Sep 24 14:08:03 2024 -0400
+
+    ----Connect UI Logic for Adding Food----
+    
+    Added addFood() method, which checks if a food object with same name and type exists in the pantry. If so, it adjusts the quantity in the pantry, if not and the fields are valid, it adds the food to the pantry list view.
+
+commit 61ad130408cfd4721824299effd13835bbf953d1
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Sep 24 11:35:24 2024 -0400
+
+    ----Business Logic for Storing Food----
+    
+    Added methods into Food class to polish a data class for storing a food. Includes getters, setters, two final fields and one not, and an overriding toString() method for the food object to display the name and quantity.
+
+commit 60b70f7427c561258061c234ff8cd37bfe49599c
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Mon Sep 23 19:45:05 2024 -0400
+
+    ----Added Basic UI Elements----
+    
+    Added labels for the pantry, food name, and food type. Also added list view for pantry and combo box for food type. Added text field for adding the food's name, and then a button to add the food to the pantry.
+
+commit 0345f6704473ea8cc99fcfc9898bceb803cf9e12
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Thu Sep 19 14:10:03 2024 -0400
+
+    Added Food data class and FoodType enumerated class!
+
+commit 998736222401c73eee0d08ffdfba26f1af3fbeec
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Thu Sep 19 12:42:23 2024 -0400
+
+    Initial commit of EmilyCollinsProject1 code!
+
+commit d6d73130c4ba513267b3e5b043435bded632b9ea
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 18 23:03:49 2024 -0400
+
+    Added test cases to TestGetTip and TestGetTotal for BillCalculator class.
+
+commit 6709526d54ae0d093acd40b53cd81c7963b4f0e8
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 18 22:57:37 2024 -0400
+
+    Added test cases to TestGetTax for the BillCalculator class.
+
+commit a626e6e4fc8fb842bad9f2ed8aae8b7d50071981
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 18 22:54:41 2024 -0400
+
+    Added test cases to TestGetSubtotal for the BillCalculator class!
+
+commit 224797ab18d8ba6a9fb53fd1b46664e7fd7155c1
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 18 22:46:25 2024 -0400
+
+    Added getTip() and getTotal() methods to BillCalculator class. Also fixed calling to these methods in BillTextifier to call to the methods in BillCalculator class instead of Bill
+
+commit 9936ab547c794ba9d9e5f76430dae86d7e9176b7
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Sep 18 22:40:03 2024 -0400
+
+    Added static methods getSubTotal() and getTax() to BillCalculator class.
+
+commit 291debf8197434ab5f05f06bc0d5e35d4251340f
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Sep 17 15:38:31 2024 -0400
+
+    Changed fields in BillItem to be final so they cannot be changed!
+
+commit a1396d5f7b76c0d86936b4d67d0370fdb7e85a77
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Sep 17 12:33:34 2024 -0400
+
+    Initial commit of Bill - Lab 4 code
+
+commit fdd89ebe60d122eda83b1a5d747223bc0456d5a9
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Sep 10 14:00:11 2024 -0400
+
+    Made it so that when removing a student the fields are updated appropriately.
+
+commit 19e291261948235bd22db3e1b6065da931569c13
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Sep 10 12:06:21 2024 -0400
+
+    Added labels and text area's for student's average grade, and individual grades. Added functionality so that when a student in the list is clicked on, their grade shows in the appropriate box. When a student is added, the average is updated.
+
+commit e9c1d713f8811f41ddf9cc8ccb31c1fdf76f7413
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Fri Sep 6 09:42:18 2024 -0400
+
+    Added gradeTextField and gradeLabel, as well as int grade to Student's parameters. Added NumberFormatException catch block and added functionality to removeStudent() :)
+
+commit e25c20aaf30982b82f68c2ec12c98873ac580145
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Thu Sep 5 16:24:42 2024 -0400
+
+    Initial project
+
+commit c3f1fff14f054d49c4349ba8ea7c98f88086d5f1
+Author: EmiOnGit05 <ecollin7@my.westga.edu>
+Date:   Thu Sep 5 15:36:32 2024 -0400
+
+    Initial commit
