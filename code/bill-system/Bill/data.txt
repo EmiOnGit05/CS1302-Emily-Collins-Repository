@@ -1,2 +1,2 @@
-apple,20.3
-orange,23.0
+apple,14.2
+orange,23.5
