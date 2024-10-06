@@ -1,5 +1,8 @@
 package edu.westga.cs1302.bill.model;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /** Supports saving and loading bill data,
  * 
  * @author CS 1302
@@ -19,8 +22,12 @@ public class BillPersistenceManager {
 	 * @param bill the bill to save
 	 * @throws IOException 
 	 */
-	public static void saveBillData(Bill bill) {
-		
+	public static void saveBillData(Bill bill) throws IOException {
+		try (FileWriter writer = new FileWriter(DATA_FILE)) {
+			for (BillItem currItem : bill.getItems()) {
+				writer.write(currItem.getName() + "," + currItem.getAmount() + System.lineSeparator());
+			}
+		}
 	}
 
 	/** Load the bill!

@@ -1,10 +1,16 @@
 package edu.westga.cs1302.bill.view;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import edu.westga.cs1302.bill.model.Bill;
 import edu.westga.cs1302.bill.model.BillItem;
+import edu.westga.cs1302.bill.model.BillPersistenceManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -18,7 +24,6 @@ import javafx.scene.control.TextField;
  * @version Fall 2024
  */
 public class MainWindow {
-	public static final String DATA_FILE = "data.txt";
 	private Bill bill;
 	
     @FXML private TextField name;
@@ -26,7 +31,6 @@ public class MainWindow {
     @FXML private TextArea receiptArea;
     @FXML private ComboBox<String> serverName;
     
-
     @FXML
     void addItem(ActionEvent event) {
     	try {
@@ -62,13 +66,21 @@ public class MainWindow {
     }
 
     @FXML
-    void saveBillData(ActionEvent event) throws IOException {
-    	try (FileWriter writer = new FileWriter(DATA_FILE)) {
-			for (BillItem currItem : bill.getItems()) {
-				writer.write(currItem.getName() + "," + currItem.getAmount());
-			}
+    void saveBillData(ActionEvent event) {
+    	try {
+			BillItem[] items = this.bill.getItems();
+			BillPersistenceManager.saveBillData(this.bill);
+		} catch (IOException writeError) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Unable to save data to file!");
+			alert.showAndWait();
 		}
     }
+    
+    @FXML
+    void loadStudentData(ActionEvent event) throws IOException, FileNotFoundException, NumberFormatException {
+		
+	}
 
     @FXML
     void initialize() {
