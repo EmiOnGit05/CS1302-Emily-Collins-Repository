@@ -1,12 +1,7 @@
 package edu.westga.cs1302.bill.view;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 import edu.westga.cs1302.bill.model.Bill;
 import edu.westga.cs1302.bill.model.BillItem;
@@ -68,7 +63,6 @@ public class MainWindow {
     @FXML
     void saveBillData(ActionEvent event) {
     	try {
-			BillItem[] items = this.bill.getItems();
 			BillPersistenceManager.saveBillData(this.bill);
 		} catch (IOException writeError) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -76,11 +70,6 @@ public class MainWindow {
 			alert.showAndWait();
 		}
     }
-    
-    @FXML
-    void loadStudentData(ActionEvent event) throws IOException, FileNotFoundException, NumberFormatException {
-		
-	}
 
     @FXML
     void initialize() {
@@ -88,6 +77,18 @@ public class MainWindow {
         this.serverName.getItems().add("Alice");
         this.serverName.getItems().add("Trudy");
         this.bill = new Bill();
+    	try {
+			this.bill = BillPersistenceManager.loadBillData();
+		} catch (FileNotFoundException fileError) {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setContentText("No save data file found, loading with no bill data.");
+			alert.showAndWait();
+		} catch (IOException parseError) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText("File not in valid format: ");
+			alert.setContentText(parseError.getMessage());
+			alert.showAndWait();
+		}
     	this.updateReceipt();
     }
 }
