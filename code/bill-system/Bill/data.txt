@@ -1,2 +1,0 @@
-apple,20.3
-orange,23.0
