@@ -1,5 +1,8 @@
 package edu.westga.cs1302.bill.view;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import edu.westga.cs1302.bill.model.Bill;
 import edu.westga.cs1302.bill.model.BillItem;
 import javafx.event.ActionEvent;
@@ -15,12 +18,14 @@ import javafx.scene.control.TextField;
  * @version Fall 2024
  */
 public class MainWindow {
+	public static final String DATA_FILE = "data.txt";
 	private Bill bill;
 	
     @FXML private TextField name;
     @FXML private TextField amount;
     @FXML private TextArea receiptArea;
     @FXML private ComboBox<String> serverName;
+    
 
     @FXML
     void addItem(ActionEvent event) {
@@ -57,10 +62,12 @@ public class MainWindow {
     }
 
     @FXML
-    void saveBillData(ActionEvent event) {
-		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setContentText("Operation not yet implemented!");
-		alert.showAndWait();
+    void saveBillData(ActionEvent event) throws IOException {
+    	try (FileWriter writer = new FileWriter(DATA_FILE)) {
+			for (BillItem currItem : bill.getItems()) {
+				writer.write(currItem.getName() + "," + currItem.getAmount());
+			}
+		}
     }
 
     @FXML
