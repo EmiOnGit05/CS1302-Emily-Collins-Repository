@@ -5,6 +5,7 @@ import java.io.IOException;
 import edu.westga.cs1302.bill.model.Bill;
 import edu.westga.cs1302.bill.model.BillItem;
 import edu.westga.cs1302.bill.model.BillPersistenceManager;
+import edu.westga.cs1302.bill.model.CSVBillPersistenceManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -29,6 +30,8 @@ public class MainWindow {
 	private TextArea receiptArea;
 	@FXML
 	private ComboBox<String> serverName;
+	@FXML
+    private ComboBox<BillPersistenceManager> saveTypeComboBox;
 
 	@FXML
 	void addItem(ActionEvent event) {
@@ -61,7 +64,7 @@ public class MainWindow {
 	@FXML
 	void saveBillData(ActionEvent event) {
 		try {
-			BillPersistenceManager.saveBillData(this.bill);
+			this.saveTypeComboBox.getValue().saveBillData(this.bill);
 		} catch (IOException writeError) {
 			this.displayErrorPopup("Unable to save data to file!");
 		}
@@ -78,7 +81,9 @@ public class MainWindow {
 		this.serverName.getItems().add("Bob");
 		this.serverName.getItems().add("Alice");
 		this.serverName.getItems().add("Trudy");
-		this.bill = BillPersistenceManager.loadBillData();
+		this.bill = this.saveTypeComboBox.getValue().loadBillData();
+		
+		this.saveTypeComboBox.getItems().add(new CSVBillPersistenceManager());
 		this.updateReceipt();
 	}
 }
