@@ -17,9 +17,10 @@
       <Label layoutX="42.0" layoutY="67.0" text="Amount" />
       <Button layoutX="59.0" layoutY="294.0" mnemonicParsing="false" onAction="#saveBillData" text="Save" />
       <TextArea fx:id="receiptArea" layoutX="14.0" layoutY="120.0" prefHeight="168.0" prefWidth="282.0" />
-      <ComboBox fx:id="serverName" layoutX="206.0" layoutY="63.0" onAction="#selectServer" prefHeight="25.0" prefWidth="88.0" />
-      <Label layoutX="233.0" layoutY="43.0" text="Server" />
+      <ComboBox fx:id="serverName" layoutX="206.0" layoutY="26.0" onAction="#selectServer" prefHeight="25.0" prefWidth="88.0" />
+      <Label layoutX="233.0" layoutY="5.0" text="Server" />
       <Line endX="28.0" endY="-152.0" layoutX="173.0" layoutY="160.0" startX="28.0" startY="-46.0" />
       <ComboBox fx:id="saveTypeComboBox" layoutX="131.0" layoutY="294.0" onAction="#changeFormat" prefWidth="150.0" />
+      <ComboBox fx:id="orderComboBox" layoutX="206.0" layoutY="71.0" onAction="#changeOrder" prefHeight="26.0" prefWidth="88.0" />
    </children>
 </AnchorPane>

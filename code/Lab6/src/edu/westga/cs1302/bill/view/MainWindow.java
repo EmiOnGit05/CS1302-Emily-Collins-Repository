@@ -1,12 +1,15 @@
 package edu.westga.cs1302.bill.view;
 
 import java.io.IOException;
+import java.util.Comparator;
 
 import edu.westga.cs1302.bill.model.Bill;
 import edu.westga.cs1302.bill.model.BillItem;
 import edu.westga.cs1302.bill.model.BillPersistenceManager;
 import edu.westga.cs1302.bill.model.CSVBillPersistenceManager;
 import edu.westga.cs1302.bill.model.TSVBillPersistenceManager;
+import edu.westga.cs1302.bill.model.BillAscendingCostComparator;
+import edu.westga.cs1302.bill.model.BillDescendingCostComparator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -22,7 +25,6 @@ import javafx.scene.control.TextField;
  */
 public class MainWindow {
 	private Bill bill;
-
 	@FXML
 	private TextField name;
 	@FXML
@@ -33,6 +35,8 @@ public class MainWindow {
 	private ComboBox<String> serverName;
 	@FXML
     private ComboBox<BillPersistenceManager> saveTypeComboBox;
+	@FXML
+    private ComboBox<Comparator<BillItem>> orderComboBox;
 
 	@FXML
 	void addItem(ActionEvent event) {
@@ -49,9 +53,7 @@ public class MainWindow {
 		}
 	}
 
-	private void updateReceipt() {
-		this.receiptArea.setText(BillTextifier.getText(this.bill));
-	}
+	
 
 	@FXML
 	void selectServer(ActionEvent event) {
@@ -75,11 +77,21 @@ public class MainWindow {
     void changeFormat(ActionEvent event) {
     	this.saveBillData(event);
     }
+	
+	@FXML 
+	void changeOrder(ActionEvent event) {
+		this.bill.sort(this.orderComboBox.getValue());
+		this.updateReceipt();
+	}
 
 	private void displayErrorPopup(String message) {
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setContentText(message);
 		alert.showAndWait();
+	}
+	
+	private void updateReceipt() {
+		this.receiptArea.setText(BillTextifier.getText(this.bill));
 	}
 
 	@FXML
@@ -91,6 +103,11 @@ public class MainWindow {
 		this.serverName.getItems().add("Bob");
 		this.serverName.getItems().add("Alice");
 		this.serverName.getItems().add("Trudy");
+		
+		this.orderComboBox.getItems().add(new BillAscendingCostComparator());
+		this.orderComboBox.getItems().add(new BillDescendingCostComparator());
+		this.orderComboBox.setValue(this.orderComboBox.getItems().get(0));
+		
 		this.bill = this.saveTypeComboBox.getValue().loadBillData();
 		
 		this.updateReceipt();

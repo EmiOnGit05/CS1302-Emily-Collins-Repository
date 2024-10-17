@@ -1,2 +1,4 @@
 No Server Set
-apple	20.0
+pizza,3.0
+apple,20.0
+orange,58.0
