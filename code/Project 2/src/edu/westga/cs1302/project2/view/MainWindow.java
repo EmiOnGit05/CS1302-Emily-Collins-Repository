@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -15,9 +16,17 @@ import javafx.scene.control.TextField;
  * @version Fall 2024
  */
 public class MainWindow {
-	@FXML private ComboBox<String> ingredientType;
-	@FXML private ListView<Ingredient> ingredientsList;
-	@FXML private TextField ingredientName;
+	@FXML
+	private ComboBox<String> ingredientType;
+	@FXML
+	private ListView<Ingredient> ingredientsList;
+	@FXML
+	private TextField ingredientName;
+	@FXML
+	private ComboBox<?> sortByComboBox;
+
+	@FXML
+	private Label sortByLabel;
 
 	@FXML
 	void addIngredient(ActionEvent event) {
