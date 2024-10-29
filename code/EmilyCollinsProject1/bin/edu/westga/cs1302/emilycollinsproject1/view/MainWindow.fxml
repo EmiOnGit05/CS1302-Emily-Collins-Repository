@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="458.0" minWidth="600.0" prefHeight="624.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.emilycollinsproject1.view.MainWindow">
+   <children>
+      <ListView fx:id="pantryListView" layoutX="30.0" layoutY="267.0" prefHeight="335.0" prefWidth="353.0" />
+      <Label fx:id="pantryLabel" layoutX="35.0" layoutY="221.0" prefHeight="35.0" prefWidth="249.0" text="Pantry:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="foodNameTextField" layoutX="370.0" layoutY="49.0" prefHeight="46.0" prefWidth="354.0" promptText="Enter food name" />
+      <Label fx:id="foodNameLabel" layoutX="119.0" layoutY="53.0" prefHeight="38.0" prefWidth="174.0" text="Food Name:">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="foodTypeLabel" layoutX="119.0" layoutY="126.0" prefHeight="46.0" prefWidth="166.0" text="Food Type:">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="foodTypeComboBox" layoutX="370.0" layoutY="128.0" prefHeight="46.0" prefWidth="354.0" />
+      <Button fx:id="addFoodButton" layoutX="469.0" layoutY="188.0" mnemonicParsing="false" onAction="#addFood" prefHeight="46.0" prefWidth="166.0" text="Add Food">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <TextField fx:id="quantityTextField" layoutX="420.0" layoutY="365.0" prefHeight="46.0" prefWidth="265.0" promptText="Enter quantity.." />
+      <Label fx:id="quantityLabel" alignment="CENTER" layoutX="420.0" layoutY="312.0" prefHeight="35.0" prefWidth="266.0" text="Edit Quantities:" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="increaseQuantityButton" alignment="CENTER" layoutX="443.0" layoutY="499.0" mnemonicParsing="false" onAction="#increaseQuantity" prefHeight="35.0" prefWidth="50.0" text="+">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="decreaseQuantityButton" alignment="CENTER" layoutX="585.0" layoutY="499.0" mnemonicParsing="false" onAction="#decreaseQuantity" prefHeight="35.0" prefWidth="50.0" text="-">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="editQuantityButton" layoutX="466.0" layoutY="435.0" mnemonicParsing="false" onAction="#setQuantity" prefHeight="38.0" prefWidth="174.0" text="Set Quantity">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteFoodButton" layoutX="469.0" layoutY="248.0" mnemonicParsing="false" onAction="#removeFood" prefHeight="46.0" prefWidth="166.0" text="Remove Food">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="viewTotalQuantityButton" layoutX="142.0" layoutY="218.0" mnemonicParsing="false" onAction="#getTotalQuantity" prefHeight="40.0" prefWidth="150.0" text="View Total Quantity" />
+   </children>
+</AnchorPane>

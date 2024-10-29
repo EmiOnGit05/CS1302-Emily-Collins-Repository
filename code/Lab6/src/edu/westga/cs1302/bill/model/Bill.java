@@ -3,8 +3,6 @@ package edu.westga.cs1302.bill.model;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import javafx.event.ActionEvent;
-
 /**
  * Manages a set of BillItems.
  * 
@@ -85,6 +83,11 @@ public class Bill {
 		return this.items.toArray(new BillItem[this.items.size()]);
 	}
 	
+	/**
+	 * Sorts items in a bill.
+	 * 
+	 * @param comparator the comparator used to sort
+	 */
 	public void sort(Comparator<BillItem> comparator) {
 		this.items.sort(comparator);
 	}

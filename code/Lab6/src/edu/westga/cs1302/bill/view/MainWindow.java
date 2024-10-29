@@ -53,8 +53,6 @@ public class MainWindow {
 		}
 	}
 
-	
-
 	@FXML
 	void selectServer(ActionEvent event) {
 		String name = this.serverName.getValue();

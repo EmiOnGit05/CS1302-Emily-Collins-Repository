@@ -14,7 +14,7 @@ public class BillAscendingCostComparator implements Comparator<BillItem> {
 	public int compare(BillItem itemOne, BillItem itemTwo) {
 		if (itemOne.getAmount() < itemTwo.getAmount()) {
 			return -1;
-		} else if (itemOne.getAmount() < itemTwo.getAmount()) {
+		} else if (itemOne.getAmount() > itemTwo.getAmount()) {
 			return 1;
 		} else {
 			return 0;

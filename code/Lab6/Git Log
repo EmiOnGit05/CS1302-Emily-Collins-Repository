@@ -1,0 +1,230 @@
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git commit -m "----Initial Commit----
+>
+> Initial commit for Lab 6!"
+[main 4c75d55] ----Initial Commit----
+ 14 files changed, 590 insertions(+)
+ create mode 100644 code/Lab6/.checkstyle
+ create mode 100644 code/Lab6/.classpath
+ create mode 100644 code/Lab6/.project
+ create mode 100644 code/Lab6/.settings/org.eclipse.core.resources.prefs
+ create mode 100644 code/Lab6/.settings/org.eclipse.jdt.core.prefs
+ create mode 100644 code/Lab6/bin/edu/westga/cs1302/bill/view/MainWindow.fxml
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/Main.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/Bill.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/BillCalculator.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/BillItem.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/BillPersistenceManager.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/view/BillTextifier.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/view/MainWindow.fxml
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/view/MainWindow.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueOne
+fatal: a branch named 'feature-issueOne' already exists
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git branch -d feature-issueOne
+Deleted branch feature-issueOne (was c0e8359).
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueOne
+Switched to a new branch 'feature-issueOne'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git add *
+warning: in the working copy of 'code/Lab6/bin/edu/westga/cs1302/bill/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab6/src/edu/westga/cs1302/bill/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab6/bin/.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git commit -m "----CSV Manager----
+>
+> Added CSVBillPersistenceManager and fixed needed errors in MainWindow. Added a ComboBox for type BillPersistenceManager that the formatted managers get added to."
+[feature-issueOne 60b6a39] ----CSV Manager----
+ 6 files changed, 83 insertions(+), 36 deletions(-)
+ create mode 100644 code/Lab6/bin/.gitignore
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/CSVBillPersistenceManager.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git add *
+warning: in the working copy of 'code/Lab6/bin/edu/westga/cs1302/bill/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab6/src/edu/westga/cs1302/bill/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+gi
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git commit -m "----Change Format----
+>
+> Added implementation to change save and load format between CSV and TSV. The format can be selected by a combobox, and then saved or read using selected rules."
+[feature-issueOne 50f4ca5] ----Change Format----
+ 6 files changed, 90 insertions(+), 3 deletions(-)
+ create mode 100644 code/Lab6/data.txt
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/TSVBillPersistenceManager.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 26 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Enumerating objects: 33, done.
+Counting objects: 100% (33/33), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (31/31), 7.31 KiB | 1.04 MiB/s, done.
+Total 31 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   f8db27a..4c75d55  main -> main
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueTwo
+Switched to a new branch 'feature-issueTwo'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 26 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueOne
+error: The following untracked working tree files would be overwritten by merge:
+        code/Lab6/bin/.gitignore
+Please move or remove them before you merge.
+Aborting
+Updating 4c75d55..50f4ca5
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git add *
+warning: in the working copy of 'code/Lab6/bin/.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueOne
+Updating 4c75d55..50f4ca5
+Fast-forward
+ code/Lab6/bin/.gitignore                           |  1 +
+ .../edu/westga/cs1302/bill/view/MainWindow.fxml    |  5 +-
+ code/Lab6/data.txt                                 |  2 +
+ .../cs1302/bill/model/BillPersistenceManager.java  | 33 +---------
+ .../bill/model/CSVBillPersistenceManager.java      | 71 ++++++++++++++++++++++
+ .../bill/model/TSVBillPersistenceManager.java      | 71 ++++++++++++++++++++++
+ .../edu/westga/cs1302/bill/view/MainWindow.fxml    |  5 +-
+ .../edu/westga/cs1302/bill/view/MainWindow.java    | 18 +++++-
+ 8 files changed, 170 insertions(+), 36 deletions(-)
+ create mode 100644 code/Lab6/bin/.gitignore
+ create mode 100644 code/Lab6/data.txt
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/CSVBillPersistenceManager.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/TSVBillPersistenceManager.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout feature-issueOne
+Switched to branch 'feature-issueOne'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git add *
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Enumerating objects: 60, done.
+Counting objects: 100% (60/60), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (24/24), done.
+Writing objects: 100% (44/44), 3.43 KiB | 879.00 KiB/s, done.
+Total 44 (delta 15), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (15/15), completed with 6 local objects.
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   c0e8359..50f4ca5  feature-issueOne -> feature-issueOne
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 28 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueOne
+Already up to date.
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git branch -d feature-issueTwo
+Deleted branch feature-issueTwo (was 4c75d55).
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueTwo
+Switched to a new branch 'feature-issueTwo'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git add *
+warning: in the working copy of 'code/Lab6/bin/edu/westga/cs1302/bill/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab6/src/edu/westga/cs1302/bill/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git commit -m "----Added Ascending/Descending Comparators----
+>
+> Added comparator classes for ascending and descending amounts. Added combobox to choose which is to be used, however descending is not working for some reason. Otherwise sorting and such has been added!"
+[feature-issueTwo 95750bc] ----Added Ascending/Descending Comparators----
+ 7 files changed, 95 insertions(+), 9 deletions(-)
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/BillAscendingCostComparator.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/BillDescendingCostComparator.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Enumerating objects: 40, done.
+Counting objects: 100% (40/40), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (23/23), 2.33 KiB | 797.00 KiB/s, done.
+Total 23 (delta 8), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (8/8), completed with 7 local objects.
+remote:
+remote: Create a pull request for 'feature-issueTwo' on GitHub by visiting:
+remote:      https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository/pull/new/feature-issueTwo
+remote:
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+ * [new branch]      feature-issueTwo -> feature-issueTwo
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 28 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueTwo
+Updating 50f4ca5..95750bc
+Fast-forward
+ .../edu/westga/cs1302/bill/view/MainWindow.fxml    |  5 ++--
+ code/Lab6/data.txt                                 |  4 ++-
+ .../src/edu/westga/cs1302/bill/model/Bill.java     |  7 ++++++
+ .../bill/model/BillAscendingCostComparator.java    | 29 ++++++++++++++++++++++
+ .../bill/model/BillDescendingCostComparator.java   | 29 ++++++++++++++++++++++
+ .../edu/westga/cs1302/bill/view/MainWindow.fxml    |  5 ++--
+ .../edu/westga/cs1302/bill/view/MainWindow.java    | 25 ++++++++++++++++---
+ 7 files changed, 95 insertions(+), 9 deletions(-)
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/BillAscendingCostComparator.java
+ create mode 100644 code/Lab6/src/edu/westga/cs1302/bill/model/BillDescendingCostComparator.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git log
+commit 95750bc9fd86188b1a5194a40bcbc9eac08b1b75 (HEAD -> main, feature-issueTwo)
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Oct 16 23:34:28 2024 -0400
+
+    ----Added Ascending/Descending Comparators----
+
+    Added comparator classes for ascending and descending amounts. Added combobox to choose which is to be used, however descending is not working for some reason. Otherwise sorting and such has been added!
+
+commit 50f4ca5816f035a5ec3e5983f53c7e17282ed7cd (feature-issueOne)
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Tue Oct 15 14:11:29 2024 -0400
+
+    ----Change Format----
+
+    Added implementation to change save and load format between CSV and TSV. The format can be selected by a combobox, and then saved or read using selected rules.
+
+commit 60b6a39d9d245be471d68f786c7e384034122706
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Thu Oct 10 15:50:23 2024 -0400
+:
