@@ -1,6 +1,10 @@
 package edu.westga.cs1302.project2.view;
 
+import java.util.Comparator;
+
 import edu.westga.cs1302.project2.model.Ingredient;
+import edu.westga.cs1302.project2.model.TypeComparator;
+import edu.westga.cs1302.project2.model.NameComparator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -23,7 +27,7 @@ public class MainWindow {
 	@FXML
 	private TextField ingredientName;
 	@FXML
-	private ComboBox<?> sortByComboBox;
+	private ComboBox<Comparator<Ingredient>> sortByComboBox;
 
 	@FXML
 	private Label sortByLabel;
@@ -34,6 +38,7 @@ public class MainWindow {
 			this.ingredientsList.getItems().add(new Ingredient(this.ingredientName.getText(), this.ingredientType.getValue()));
 			this.ingredientName.clear();
 			this.ingredientType.getSelectionModel().clearSelection();
+			this.changeOrder(event);
 		} catch (IllegalArgumentException error) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText("Unable to add ingredient");
@@ -47,7 +52,13 @@ public class MainWindow {
 		Ingredient selectedIngredient = this.ingredientsList.getSelectionModel().getSelectedItem();
 		if (selectedIngredient != null) {
 			this.ingredientsList.getItems().remove(selectedIngredient);
+			this.changeOrder(event);
 		}
+	}
+	
+	@FXML
+	void changeOrder(ActionEvent event) {
+		this.ingredientsList.getItems().sort(this.sortByComboBox.getValue());
 	}
 
 	@FXML
@@ -57,6 +68,8 @@ public class MainWindow {
 		this.ingredientType.getItems().add("Bread");
 		this.ingredientType.getItems().add("Fruit");
 		this.ingredientType.getItems().add("Spice");
+		this.sortByComboBox.getItems().add(new TypeComparator());
+		this.sortByComboBox.getItems().add(new NameComparator());
 
 	}
 }

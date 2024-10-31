@@ -15,5 +15,10 @@ public class NameComparator implements Comparator<Ingredient> {
 	public int compare(Ingredient ingOne, Ingredient ingTwo) {
 		return ingOne.getName().compareTo(ingTwo.getName());
 	}
+	
+	@Override
+	public String toString() {
+		return "Name";
+	}
 
 }
