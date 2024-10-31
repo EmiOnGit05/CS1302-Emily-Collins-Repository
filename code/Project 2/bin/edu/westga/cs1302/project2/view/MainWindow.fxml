@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane minHeight="458.0" minWidth="600.0" prefHeight="642.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.project2.view.MainWindow">
    <children>
@@ -22,5 +23,19 @@
       <Line endX="-412.0" endY="-133.0" layoutX="427.0" layoutY="262.0" startX="-200.0" startY="-133.0" />
       <ComboBox fx:id="sortByComboBox" layoutX="47.0" layoutY="92.0" onAction="#changeOrder" prefWidth="150.0" />
       <Label fx:id="sortByLabel" layoutX="105.0" layoutY="73.0" text="Sort By" />
+      <ListView fx:id="recipeListView" layoutX="254.0" layoutY="39.0" prefHeight="266.0" prefWidth="200.0" />
+      <Label fx:id="recipeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="11.0" prefHeight="26.0" prefWidth="200.0" text="Recipe" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="addIngredientsButton" layoutX="290.0" layoutY="321.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" text="Add Ingredients" />
+      <TextField fx:id="recipeNameTextField" layoutX="471.0" layoutY="71.0" prefHeight="41.0" prefWidth="150.0" />
+      <Label fx:id="recipeTextLabel" alignment="CENTER" layoutX="478.0" layoutY="39.0" prefHeight="7.0" prefWidth="127.0" text="Recipe Name:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="addRecipeButton" layoutX="474.0" layoutY="135.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="150.0" text="Add Recipe" />
    </children>
 </AnchorPane>
