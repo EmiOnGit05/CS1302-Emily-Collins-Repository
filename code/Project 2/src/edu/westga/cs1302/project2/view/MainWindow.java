@@ -1,10 +1,14 @@
 package edu.westga.cs1302.project2.view;
 
+import java.io.IOException;
 import java.util.Comparator;
 
 import edu.westga.cs1302.project2.model.Ingredient;
 import edu.westga.cs1302.project2.model.TypeComparator;
+import edu.westga.cs1302.project2.utilities.RecipeStringConverter;
+import edu.westga.cs1302.project2.model.RecipeFileWriter;
 import edu.westga.cs1302.project2.model.NameComparator;
+import edu.westga.cs1302.project2.model.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -62,6 +66,18 @@ public class MainWindow {
 			alert.showAndWait();
 		}
 	}
+	
+	@FXML 
+	void addIngredientToRecipe(ActionEvent event) {
+		if (this.ingredientsList.getSelectionModel().getSelectedItem() == null) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText("No ingredient is selected! Please select one and try again.");
+			alert.showAndWait();
+		} else {
+			this.recipeListView.getItems().add(this.ingredientsList.getSelectionModel().getSelectedItem());
+		}
+		
+	}
 
 	@FXML
 	void removeIngredient(ActionEvent event) {
@@ -69,6 +85,30 @@ public class MainWindow {
 		if (selectedIngredient != null) {
 			this.ingredientsList.getItems().remove(selectedIngredient);
 			this.changeOrder(event);
+		}
+	}
+	
+	@FXML
+	void addRecipe(ActionEvent event) {
+		try {
+			Recipe recipe = new Recipe(this.recipeListView.getItems(), this.recipeNameTextField.getText());
+			String recipeString = RecipeStringConverter.recipeConverter(recipe);
+			RecipeFileWriter writer = new RecipeFileWriter();
+			writer.saveRecipe(recipeString);
+			this.recipeListView.getItems().clear();
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setHeaderText("Recipe added!");
+			alert.showAndWait();
+		} catch (IllegalArgumentException error) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText("Unable to create/add recipe");
+			alert.setContentText(error.getMessage());
+			alert.showAndWait();
+		} catch (IOException error) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText("Unable to save recipe to file");
+			alert.setContentText(error.getMessage());
+			alert.showAndWait();
 		}
 	}
 	

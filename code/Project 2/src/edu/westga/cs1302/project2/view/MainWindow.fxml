@@ -29,13 +29,13 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="addIngredientsButton" layoutX="290.0" layoutY="321.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" text="Add Ingredients" />
+      <Button fx:id="addIngredientsButton" layoutX="290.0" layoutY="321.0" mnemonicParsing="false" onAction="#addIngredientToRecipe" prefHeight="30.0" prefWidth="127.0" text="Add Ingredients" />
       <TextField fx:id="recipeNameTextField" layoutX="471.0" layoutY="71.0" prefHeight="41.0" prefWidth="150.0" />
       <Label fx:id="recipeTextLabel" alignment="CENTER" layoutX="478.0" layoutY="39.0" prefHeight="7.0" prefWidth="127.0" text="Recipe Name:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="addRecipeButton" layoutX="474.0" layoutY="135.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="150.0" text="Add Recipe" />
+      <Button fx:id="addRecipeButton" layoutX="474.0" layoutY="135.0" mnemonicParsing="false" onAction="#addRecipe" prefHeight="42.0" prefWidth="150.0" text="Add Recipe" />
    </children>
 </AnchorPane>

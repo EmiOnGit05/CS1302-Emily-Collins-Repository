@@ -1,15 +1,26 @@
 package edu.westga.cs1302.project2.model;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Writes a recipe to the end of a file.
+ * 
+ * @author Emi Collins
+ * @version Fall 2024
+ */
 public class RecipeFileWriter {
 	public static final String DATA_FILE = "data.txt";
 	
-	public void saveRecipe(Recipe recipe) throws IOException, IllegalStateException {
+	/**
+	 * Writes a recipe to the end of a file if it does not already exist.
+	 * @param recipe - recipe to write
+	 * @throws IOException
+	 * @throws IllegalStateException
+	 */
+	public void saveRecipe(String recipe) throws IOException, IllegalStateException {
 		try (FileWriter writer = new FileWriter(DATA_FILE)) {
 			if (!this.duplicateRecipe(recipe)) {
 				writer.append(recipe.toString());
@@ -19,10 +30,10 @@ public class RecipeFileWriter {
 		}
 	}
 	
-	private boolean duplicateRecipe(Recipe recipe) throws IOException {
+	private boolean duplicateRecipe(String recipe) throws IOException {
 		File input = new File(DATA_FILE);
 		try (Scanner reader = new Scanner(input)) {
-			String name = recipe.getName();
+			String name = recipe.split(System.lineSeparator())[0];
 			while (reader.hasNextLine()) {
 				if (reader.nextLine().equals(name)) {
 					return true;
@@ -31,18 +42,6 @@ public class RecipeFileWriter {
 			}
 			return false;
 		}
-	}
-	
-	private int countLines() throws FileNotFoundException {
-		int count = 0;
-		File input = new File(DATA_FILE);
-		try (Scanner reader = new Scanner(input)) {
-			while (reader.hasNextLine()) {
-				reader.nextLine();
-				count++;
-			}
-		}
-		return count;
 	}
 
 }

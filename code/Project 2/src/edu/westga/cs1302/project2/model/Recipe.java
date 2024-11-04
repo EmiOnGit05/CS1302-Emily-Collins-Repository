@@ -1,6 +1,6 @@
 package edu.westga.cs1302.project2.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class for holding a recipe.
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @version Fall 2024
  */
 public class Recipe {
-	private ArrayList<Ingredient> ingredients;
+	private List<Ingredient> ingredients;
 	private String recipeName;
 	
 	/**
@@ -19,12 +19,12 @@ public class Recipe {
 	 * @param recipeName - name of the recipe
 	 * @throws IllegalArgumentException - if ingredients or recipeName is null
 	 */
-	public Recipe(ArrayList<Ingredient> ingredients, String recipeName) {
-		if (ingredients == null) {
-			throw new IllegalArgumentException("List of ingredients cannot be missing!");
+	public Recipe(List<Ingredient> ingredients, String recipeName) {
+		if (ingredients == null || ingredients.isEmpty()) {
+			throw new IllegalArgumentException("List of ingredients cannot be missing! Please add ingredients to the recipe.");
 		}
-		if (recipeName == null) {
-			throw new IllegalArgumentException("Name of recipe cannot be null!");
+		if (recipeName == null || recipeName.isEmpty() || recipeName.isBlank()) {
+			throw new IllegalArgumentException("Name of recipe cannot be missing! Please enter a name for the recipe.");
 		}
 		this.ingredients = ingredients;
 		this.recipeName = recipeName;
@@ -35,7 +35,7 @@ public class Recipe {
 	 * 
 	 * @return this.ingredients - ingredients in the recipe
 	 */
-	public ArrayList<Ingredient> getIngredients() {
+	public List<Ingredient> getIngredients() {
 		return this.ingredients;
 	}
 	
