@@ -1,13 +1,10 @@
 package edu.westga.cs1302.password_generator.view;
 
-import java.util.Random;
-
-import edu.westga.cs1302.password_generator.model.PasswordGenerator;
-import javafx.event.ActionEvent;
+import edu.westga.cs1302.password_generator.viewmodel.ViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -18,11 +15,31 @@ import javafx.scene.control.TextField;
  */
 public class MainWindow {
 
-    @FXML private CheckBox mustIncludeDigits;
-    @FXML private CheckBox mustIncludeLowerCaseLetters;
-    @FXML private CheckBox mustIncludeUpperCaseLetters;
-    @FXML private TextField minimumLength;
-    @FXML private TextArea output;
+	@FXML
+	private CheckBox mustIncludeDigits;
+	@FXML
+	private CheckBox mustIncludeLowerCaseLetters;
+	@FXML
+	private CheckBox mustIncludeUpperCaseLetters;
+	@FXML
+	private TextField minimumLength;
+	@FXML
+	private TextArea output;
+	@FXML
+	private Label errorLabel;
+	@FXML
+	private Button passwordButton;
+	
+	private ViewModel viewmodel;
+    
+    private void bindComponentsToViewModel() {
+    	this.errorLabel.textProperty().bind(this.viewmodel.errorProperty());
+    	this.minimumLength.textProperty().bindBidirectional(this.viewmodel.minimumLengthProperty());
+    	this.mustIncludeDigits.selectedProperty().bindBidirectional(this.viewmodel.includeDigitsProperty());
+    	this.mustIncludeLowerCaseLetters.selectedProperty().bindBidirectional(this.viewmodel.includeLowerCaseLettersProperty());
+    	this.mustIncludeUpperCaseLetters.selectedProperty().bindBidirectional(this.viewmodel.includeUpperCaseLettersProperty());
+    	this.output.textProperty().bind(this.viewmodel.outputProperty());
+    }
 
     @FXML
     void initialize() {
@@ -33,7 +50,9 @@ public class MainWindow {
         assert this.output != null : "fx:id=\"output\" was not injected: check your FXML file 'MainWindow.fxml'.";
 
         this.minimumLength.setText("1");
-//        Random randomNumberGenerator = new Random();
-//        this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());
+        this.viewmodel = new ViewModel();
+        this.bindComponentsToViewModel();
+        this.passwordButton.setOnAction((event) -> {
+        	this.viewmodel.generatePassword(); });
     }
 }

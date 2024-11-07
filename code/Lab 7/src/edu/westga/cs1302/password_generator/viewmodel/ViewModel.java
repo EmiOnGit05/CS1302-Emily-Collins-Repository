@@ -7,8 +7,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 /**
  * The class view model.
@@ -22,17 +20,21 @@ public class ViewModel {
 	private BooleanProperty includeUpperCaseLettersProperty;
 	private StringProperty minimumLengthProperty;
 	private StringProperty outputProperty;
+	private StringProperty errorProperty;
 	private PasswordGenerator generator;
 	
 	/**
 	 * Constructor for ViewModel.
 	 * 
 	 * @precondition none
-	 * @postcondition this.includeDigitsProperty = new SimpleBooleanProperty(false) &&
-	 * this.includeLowerCaseLettersProperty = new SimpleBooleanProperty(false) &&
-	 * this.includeUpperCaseLettersProperty = new SimpleBooleanProperty(false) && 
-	 * this.minimumLengthProperty = new SimpleStringProperty() &&
-	 * this.generator = new PasswordGenerator(randomNumberGenerator.nextLong())
+	 * @postcondition this.includeDigitsProperty = new SimpleBooleanProperty(false)
+	 *                && this.includeLowerCaseLettersProperty = new
+	 *                SimpleBooleanProperty(false) &&
+	 *                this.includeUpperCaseLettersProperty = new
+	 *                SimpleBooleanProperty(false) && this.minimumLengthProperty =
+	 *                new SimpleStringProperty() && this.generator = new
+	 *                PasswordGenerator(randomNumberGenerator.nextLong()) &&
+	 *                this.errorProperty = new SimpleStringProperty()
 	 */
 	public ViewModel() {
 		this.includeDigitsProperty = new SimpleBooleanProperty(false);
@@ -42,26 +44,81 @@ public class ViewModel {
 		this.outputProperty = new SimpleStringProperty();
 		Random randomNumberGenerator = new Random();
         this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());
+        this.errorProperty = new SimpleStringProperty();
 	}
 	
-    void generatePassword() {
+	/**
+	 * Getter for this.includeDigitsProperty
+	 * @return this.includeDigitsProperty
+	 */
+	public BooleanProperty includeDigitsProperty() {
+		return this.includeDigitsProperty;
+	}
+	
+	/**
+	 * Getter for this.includeLowerCaseLettersProperty
+	 * @return this.includeLowerCaseLettersProperty
+	 */
+	public BooleanProperty includeLowerCaseLettersProperty() {
+		return this.includeLowerCaseLettersProperty;
+	}
+	
+	/**
+	 * Getter for this.includeUpperCaseLettersProperty
+	 * @return this.includeUpperCaseLettersProperty
+	 */
+	public BooleanProperty includeUpperCaseLettersProperty() {
+		return this.includeUpperCaseLettersProperty;
+	}
+	
+	/**
+	 * Getter for this.minimumLengthProperty
+	 * @return this.minimumLengthProperty
+	 */
+	public StringProperty minimumLengthProperty() {
+		return this.minimumLengthProperty;
+	}
+	
+	/**
+	 * Getter for this.outputProperty
+	 * @return this.outputProperty
+	 */
+	public StringProperty outputProperty() {
+		return this.outputProperty;
+	}
+	
+	/**
+	 * Getter for this.errorProperty
+	 * @return this.errorProperty
+	 */
+	public StringProperty errorProperty() {
+		return this.errorProperty;
+	}
+
+    /**
+	 * Generates a password.
+	 * 
+	 * @throws NumberFormatException - exception for parsing the minimumLength value
+	 *                               && IllegalArgumentException - exception for if
+	 *                               settingMinimumLength() goes wrong
+	 * 
+	 */
+    public void generatePassword() {
     	int minimumLength = -1;
     	
     	try {
     		minimumLength = Integer.parseInt(this.minimumLengthProperty.getValue());
+    		this.errorProperty.set("");
     	} catch (NumberFormatException numberError) {
-    		Alert alert = new Alert(AlertType.ERROR);
-    		alert.setContentText("Invalid Minimum Length: must be a positive integer, but was " + this.minimumLengthProperty.getValue());
-    		alert.show();
+    		this.errorProperty.set("Invalid Minimum Length: must be a positive integer, but was " + this.minimumLengthProperty.getValue());
     		return;
     	}
     	
     	try {
     		this.generator.setMinimumLength(minimumLength);
+    		this.errorProperty.set("");
     	} catch (IllegalArgumentException invalidLengthError) {
-    		Alert alert = new Alert(AlertType.ERROR);
-    		alert.setContentText("Invalid Minimum Length: " + invalidLengthError.getMessage());
-    		alert.show();
+    		this.errorProperty.set("Invalid Minimum Length: " + invalidLengthError.getMessage());
     		return;
     	}
     	
