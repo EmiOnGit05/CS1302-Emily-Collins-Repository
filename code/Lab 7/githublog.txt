@@ -1,0 +1,179 @@
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueTwo
+Updating 09ca623..586d1a8
+Fast-forward
+ code/Lab 7/.checkstyle                             |  10 +
+ code/Lab 7/.classpath                              |  19 ++
+ code/Lab 7/.project                                |  23 ++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ code/Lab 7/.settings/org.eclipse.jdt.core.prefs    |  14 ++
+ .../cs1302/password_generator/view/MainWindow.fxml |  21 ++
+ .../edu/westga/cs1302/password_generator/Main.java |  50 +++++
+ .../model/PasswordGenerator.java                   | 233 +++++++++++++++++++++
+ .../password_generator/TestGeneratePassword.java   | 127 +++++++++++
+ .../password_generator/TestSetMinimumLength.java   |  26 +++
+ .../cs1302/password_generator/view/MainWindow.fxml |  21 ++
+ .../cs1302/password_generator/view/MainWindow.java |  72 +++++++
+ .../westga/cs1302/project2/view/MainWindow.fxml    |  15 ++
+ code/Project 2/data.txt                            |   2 +
+ .../edu/westga/cs1302/project2/model/Recipe.java   |  51 +++++
+ .../cs1302/project2/model/RecipeFileWriter.java    |  47 +++++
+ .../project2/utilities/RecipeStringConverter.java  |  29 +++
+ .../westga/cs1302/project2/view/MainWindow.fxml    |  15 ++
+ .../westga/cs1302/project2/view/MainWindow.java    |  57 +++++
+ code/bill-system/Bill/bin/.gitignore               |   1 +
+ 20 files changed, 835 insertions(+)
+ create mode 100644 code/Lab 7/.checkstyle
+ create mode 100644 code/Lab 7/.classpath
+ create mode 100644 code/Lab 7/.project
+ create mode 100644 code/Lab 7/.settings/org.eclipse.core.resources.prefs
+ create mode 100644 code/Lab 7/.settings/org.eclipse.jdt.core.prefs
+ create mode 100644 code/Lab 7/bin/edu/westga/cs1302/password_generator/view/MainWindow.fxml
+ create mode 100644 code/Lab 7/src/edu/westga/cs1302/password_generator/Main.java
+ create mode 100644 code/Lab 7/src/edu/westga/cs1302/password_generator/model/PasswordGenerator.java
+ create mode 100644 code/Lab 7/src/edu/westga/cs1302/password_generator/test/password_generator/TestGeneratePassword.java
+ create mode 100644 code/Lab 7/src/edu/westga/cs1302/password_generator/test/password_generator/TestSetMinimumLength.java
+ create mode 100644 code/Lab 7/src/edu/westga/cs1302/password_generator/view/MainWindow.fxml
+ create mode 100644 code/Lab 7/src/edu/westga/cs1302/password_generator/view/MainWindow.java
+ create mode 100644 code/Project 2/data.txt
+ create mode 100644 code/Project 2/src/edu/westga/cs1302/project2/model/Recipe.java
+ create mode 100644 code/Project 2/src/edu/westga/cs1302/project2/model/RecipeFileWriter.java
+ create mode 100644 code/Project 2/src/edu/westga/cs1302/project2/utilities/RecipeStringConverter.java
+ create mode 100644 code/bill-system/Bill/bin/.gitignore
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git commit -m "----Lab 7 Initial Commit----
+>
+> Initial commit of lab 7's code."
+On branch main
+Your branch is ahead of 'origin/main' by 36 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   09ca623..586d1a8  main -> main
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git branch -d feature-issueOne
+Deleted branch feature-issueOne (was 09ca623).
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueOne
+Switched to a new branch 'feature-issueOne'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git add *
+warning: in the working copy of 'code/Lab 7/bin/.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git commit -m "----Implement ViewModel----
+>
+> Added a ViewModel class and implemented property fields for all needed fields to correspond with MainWindow and hold data. Also transferred over and modified generatePassword()."
+[feature-issueOne 609a07e] ----Implement ViewModel----
+ 3 files changed, 80 insertions(+), 35 deletions(-)
+ create mode 100644 code/Lab 7/bin/.gitignore
+ create mode 100644 code/Lab 7/src/edu/westga/cs1302/password_generator/viewmodel/ViewModel.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 36 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueOne
+Updating 586d1a8..609a07e
+Fast-forward
+ code/Lab 7/bin/.gitignore                          |  1 +
+ .../cs1302/password_generator/view/MainWindow.java | 37 +----------
+ .../password_generator/viewmodel/ViewModel.java    | 77 ++++++++++++++++++++++
+ 3 files changed, 80 insertions(+), 35 deletions(-)
+ create mode 100644 code/Lab 7/bin/.gitignore
+ create mode 100644 code/Lab 7/src/edu/westga/cs1302/password_generator/viewmodel/ViewModel.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Enumerating objects: 26, done.
+Counting objects: 100% (26/26), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (15/15), 1.56 KiB | 1.56 MiB/s, done.
+Total 15 (delta 6), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), completed with 5 local objects.
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   586d1a8..609a07e  main -> main
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git branch -d feature-issueTwo
+Deleted branch feature-issueTwo (was 586d1a8).
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueTwo
+Switched to a new branch 'feature-issueTwo'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git add *
+warning: in the working copy of 'code/Lab 7/bin/edu/westga/cs1302/password_generator/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab 7/src/edu/westga/cs1302/password_generator/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git commit -m "----Bind View to ViewModel----
+>
+> Binded all properties in MainWindow as well as added a setOnAction() for the button. Tested through the program and added calls to methods as needed in the initialize method."
+[feature-issueTwo 0309ea7] ----Bind View to ViewModel----
+ 4 files changed, 115 insertions(+), 39 deletions(-)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 37 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueTwo
+Updating 609a07e..0309ea7
+Fast-forward
+ .../cs1302/password_generator/view/MainWindow.fxml | 12 +--
+ .../cs1302/password_generator/view/MainWindow.fxml | 12 +--
+ .../cs1302/password_generator/view/MainWindow.java | 45 ++++++++----
+ .../password_generator/viewmodel/ViewModel.java    | 85 ++++++++++++++++++----
+ 4 files changed, 115 insertions(+), 39 deletions(-)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Enumerating objects: 36, done.
+Counting objects: 100% (36/36), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (20/20), 2.43 KiB | 2.43 MiB/s, done.
+Total 20 (delta 6), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), completed with 6 local objects.
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   609a07e..0309ea7  main -> main
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git log
+commit 0309ea7c8dc61e21ed51fe9567750e07e15c5f5a (HEAD -> main, feature-issueTwo)
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Nov 6 23:43:52 2024 -0500
+
+    ----Bind View to ViewModel----
+
+    Binded all properties in MainWindow as well as added a setOnAction() for the button. Tested through the program and added calls to methods as needed in the initialize method.
+
+commit 609a07ef31fc5eba1d85049618536b34795175da (feature-issueOne)
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Nov 6 22:36:17 2024 -0500
+
+    ----Implement ViewModel----
+
+    Added a ViewModel class and implemented property fields for all needed fields to correspond with MainWindow and hold data. Also transferred over and modified generatePassword().
+
+commit 586d1a8193493067c3bef0fdfc3b354a9ef9dcad
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Sun Nov 3 22:53:27 2024 -0500
+:
