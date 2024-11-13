@@ -43,10 +43,4 @@ public class MainWindow {
     			} 
     	);
     }
-    
-    private void setUpListenersForValidation() {
-    	this.minimumLength.textProperty().addListener((obs, oldValue, newValue) -> {
-    		
-    	});
-    }
 }
