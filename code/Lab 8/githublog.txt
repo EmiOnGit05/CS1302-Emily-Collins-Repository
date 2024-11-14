@@ -1,0 +1,132 @@
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git commit -m "----Implement Input Validation----
+>
+> Implemented a changelistener for the textfield input for minimumLength. Now shows an error message whenever an illegal character is entered, and then no error is shown otherwise."
+On branch feature-issueOne
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    code/Lab 7/bin/.gitignore
+        modified:   code/Lab 8/bin/.gitignore
+        modified:   code/Lab 8/src/edu/westga/cs1302/password_generator/view/MainWindow.java
+        modified:   code/Lab 8/src/edu/westga/cs1302/password_generator/viewmodel/ViewModel.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git add *
+warning: in the working copy of 'code/Lab 8/bin/.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git commit -m "----Implement Input Validation----
+>
+> Implemented a change listener for the textfield for input of minimumLength. Shows an error message when an illegal character is entered, but none if all characters are allowed."
+[feature-issueOne 9333ffa] ----Implement Input Validation----
+ 4 files changed, 25 insertions(+), 2 deletions(-)
+ delete mode 100644 code/Lab 7/bin/.gitignore
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Enumerating objects: 82, done.
+Counting objects: 100% (82/82), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (48/48), done.
+Writing objects: 100% (74/74), 12.08 KiB | 1.34 MiB/s, done.
+Total 74 (delta 19), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (19/19), completed with 2 local objects.
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   09ca623..9333ffa  feature-issueOne -> feature-issueOne
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 42 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueOne
+Updating 240f4a8..9333ffa
+Fast-forward
+ code/Lab 7/bin/.gitignore                                  |  1 -
+ code/Lab 8/bin/.gitignore                                  |  2 +-
+ .../westga/cs1302/password_generator/view/MainWindow.java  | 14 ++++++++++++++
+ .../cs1302/password_generator/viewmodel/ViewModel.java     | 10 ++++++++++
+ 4 files changed, 25 insertions(+), 2 deletions(-)
+ delete mode 100644 code/Lab 7/bin/.gitignore
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git branch -d feature-issueTwo
+Deleted branch feature-issueTwo (was 0309ea7).
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueTwo
+Switched to a new branch 'feature-issueTwo'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git add *
+warning: in the working copy of 'code/Lab 8/bin/edu/westga/cs1302/password_generator/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab 8/src/edu/westga/cs1302/password_generator/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git commit -m "----Store List of Passwords----
+>
+> Replaced the output textArea with a ListView of strings. Every time a password is generated, it is added to the list. There is a listproperty in ViewModel that is bound to the list in the CodeBehind."
+[feature-issueTwo f8c50e0] ----Store List of Passwords----
+ 5 files changed, 37 insertions(+), 27 deletions(-)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+git: 'https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository' is not a git command. See 'git --help'.
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+git chEnumerating objects: 44, done.
+Counting objects: 100% (44/44), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (24/24), 2.10 KiB | 1.05 MiB/s, done.
+Total 24 (delta 7), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (7/7), completed with 7 local objects.
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   586d1a8..f8c50e0  feature-issueTwo -> feature-issueTwo
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 43 commits.
+  (use "git push" to publish your local commits)
+g
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueTwo
+Updating 9333ffa..f8c50e0
+Fast-forward
+ .../cs1302/password_generator/view/MainWindow.fxml |  6 +++---
+ .../viewmodel/viewmodel/TestGeneratePassword.java  |  6 +++---
+ .../cs1302/password_generator/view/MainWindow.fxml |  6 +++---
+ .../cs1302/password_generator/view/MainWindow.java | 25 ++++++++++++++--------
+ .../password_generator/viewmodel/ViewModel.java    | 21 ++++++++++--------
+ 5 files changed, 37 insertions(+), 27 deletions(-)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git log
+commit f8c50e0b19145d5fdd94ec760d41e0d84a3f221f (HEAD -> main, feature-issueTwo)
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Thu Nov 14 00:29:01 2024 -0500
+
+    ----Store List of Passwords----
+
+    Replaced the output textArea with a ListView of strings. Every time a password is generated, it is added to the list. There is a listproperty in ViewModel that is bound to the list in the CodeBehind.
+
+commit 9333ffab6e993a65e0fdb591ca03b9a3169d1479 (feature-issueOne)
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Nov 13 23:57:18 2024 -0500
+
+    ----Implement Input Validation----
+
+    Implemented a change listener for the textfield for input of minimumLength. Shows an error message when an illegal character is entered, but none if all characters are allowed.
+
+commit 240f4a8c0980340fad75adb9a625a8408189c7fa
+Merge: 5fbab38 c6e9954
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+:
