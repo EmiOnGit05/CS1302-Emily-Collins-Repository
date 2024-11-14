@@ -37,10 +37,24 @@ public class MainWindow {
     	this.output.textProperty().bind(this.vm.getPassword());
     	this.errorTextLabel.textProperty().bind(this.vm.getErrorText());
     	
+    	this.setUpListenersForValidation();
+    	
     	this.generatePasswordButton.setOnAction(
     			(event) -> { 
     				this.vm.generatePassword();
     			} 
     	);
+    }
+    
+    private void setUpListenersForValidation() {
+    	this.minimumLength.textProperty().addListener((obs, oldValue, newValue) -> {
+    		if (newValue != null) {
+    			if (!newValue.matches("\\d+")) {
+    				this.vm.setErrorText("Invalid minimum length. Please try again.");
+    			} else {
+    				this.vm.setErrorText("");
+    			}
+    		}
+    	});
     }
 }

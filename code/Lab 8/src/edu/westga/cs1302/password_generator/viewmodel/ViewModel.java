@@ -86,6 +86,16 @@ public class ViewModel {
 	public StringProperty getErrorText() {
 		return this.errorText;
 	}
+	
+	
+	/**
+	 * Allows error message to be changed externally.
+	 * 
+	 * @param error the error
+	 */
+	public void setErrorText(String error) {
+		this.errorText.setValue(error);
+	}
 
 	/** Generates a password using the minimum length, require digit, require lower case, and require upper case property values.
 	 * 
