@@ -72,7 +72,21 @@ public class MainWindow {
 		this.fileCloseMenuItem.setOnAction((event) -> {
 			this.actionClose();
 		});
+		
+		this.setUpListenersForValidation();
 	}
+    
+    private void setUpListenersForValidation() {
+    	this.minimumLength.textProperty().addListener((obs, oldValue, newValue) -> {
+    		if (newValue != null) {
+    			if (!newValue.matches("\\d+")) {
+    				this.generatePasswordButton.disableProperty().set(true);
+    			} else {
+    				this.generatePasswordButton.disableProperty().set(false);
+    			}
+    		}
+    	});
+    }
     
     /**
      * Sends an informative alert about the application.
