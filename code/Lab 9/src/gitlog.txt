@@ -1,0 +1,161 @@
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git add *
+warning: in the working copy of 'code/Lab 9/.checkstyle', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab 9/.project', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab 9/.settings/org.eclipse.jdt.core.prefs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab 9/bin/edu/westga/cs1302/password_generator/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab 9/src/edu/westga/cs1302/password_generator/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git commit -m "----Initial Commit Lab 9----
+>
+> Initial commit of Lab 9 code."
+[main 60120e8] ----Initial Commit Lab 9----
+ 14 files changed, 759 insertions(+)
+ create mode 100644 code/Lab 9/.checkstyle
+ create mode 100644 code/Lab 9/.classpath
+ create mode 100644 code/Lab 9/.project
+ create mode 100644 code/Lab 9/.settings/org.eclipse.core.resources.prefs
+ create mode 100644 code/Lab 9/.settings/org.eclipse.jdt.core.prefs
+ create mode 100644 code/Lab 9/bin/edu/westga/cs1302/password_generator/view/MainWindow.fxml
+ create mode 100644 code/Lab 9/src/edu/westga/cs1302/password_generator/Main.java
+ create mode 100644 code/Lab 9/src/edu/westga/cs1302/password_generator/model/PasswordGenerator.java
+ create mode 100644 code/Lab 9/src/edu/westga/cs1302/password_generator/test/model/password_generator/TestGeneratePassword.java
+ create mode 100644 code/Lab 9/src/edu/westga/cs1302/password_generator/test/model/password_generator/TestSetMinimumLength.java
+ create mode 100644 code/Lab 9/src/edu/westga/cs1302/password_generator/test/viewmodel/viewmodel/TestGeneratePassword.java
+ create mode 100644 code/Lab 9/src/edu/westga/cs1302/password_generator/view/MainWindow.fxml
+ create mode 100644 code/Lab 9/src/edu/westga/cs1302/password_generator/view/MainWindow.java
+ create mode 100644 code/Lab 9/src/edu/westga/cs1302/password_generator/viewmodel/ViewModel.java
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git branch -d feature-issueOne
+Deleted branch feature-issueOne (was 9333ffa).
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout feauture-issueOne
+error: pathspec 'feauture-issueOne' did not match any file(s) known to git
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueOne
+Switched to a new branch 'feature-issueOne'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git add *
+warning: in the working copy of 'code/Lab 9/bin/edu/westga/cs1302/password_generator/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab 9/src/edu/westga/cs1302/password_generator/view/MainWindow.fxml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'code/Lab 9/bin/.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git commit -m "----Menu----
+>
+> Added a file menu with a about and close option. About sends an about alert and close closes the application."
+[feature-issueOne 1e5e756] ----Menu----
+ 5 files changed, 109 insertions(+), 27 deletions(-)
+ create mode 100644 code/Lab 9/bin/.gitignore
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Enumerating objects: 60, done.
+Counting objects: 100% (60/60), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (34/34), done.
+Writing objects: 100% (58/58), 9.83 KiB | 1.23 MiB/s, done.
+Total 58 (delta 9), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (9/9), completed with 2 local objects.
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   9333ffa..1e5e756  feature-issueOne -> feature-issueOne
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueOne)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 46 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueOne
+Updating 60120e8..1e5e756
+Fast-forward
+ code/Lab 9/bin/.gitignore                          |  1 +
+ .../cs1302/password_generator/view/MainWindow.fxml | 31 +++++++---
+ .../cs1302/password_generator/view/MainWindow.fxml | 31 +++++++---
+ .../cs1302/password_generator/view/MainWindow.java | 72 +++++++++++++++++++---
+ .../password_generator/viewmodel/ViewModel.java    |  1 +
+ 5 files changed, 109 insertions(+), 27 deletions(-)
+ create mode 100644 code/Lab 9/bin/.gitignore
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git branch -d feature-issueTwo
+Deleted branch feature-issueTwo (was f8c50e0).
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git checkout -b feature-issueTwo
+Switched to a new branch 'feature-issueTwo'
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git add *
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git commit -m "----Enable/Disable----
+>
+> Adds a change listener to input field to verify whether or not the entered input is valid. If valid, the generatePassword button is active, if invalid the button is disabled."
+[feature-issueTwo 9cd3f78] ----Enable/Disable----
+ 1 file changed, 14 insertions(+)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (11/11), 1.04 KiB | 532.00 KiB/s, done.
+Total 11 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   f8c50e0..9cd3f78  feature-issueTwo -> feature-issueTwo
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (feature-issueTwo)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 47 commits.
+  (use "git push" to publish your local commits)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git merge feature-issueTwo
+Updating 1e5e756..9cd3f78
+Fast-forward
+ .../westga/cs1302/password_generator/view/MainWindow.java  | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git push https://github.com/CS1302-Emily-Collins-Repository
+remote: Not Found
+fatal: repository 'https://github.com/CS1302-Emily-Collins-Repository/' not found
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git push https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/EmiOnGit05/CS1302-Emily-Collins-Repository
+   8c91cc0..9cd3f78  main -> main
+
+pikac@Emilys_Computer MINGW64 ~/Desktop/Labs/CS1302-Emily-Collins-Repository (main)
+$ git log
+commit 9cd3f78c1ede9bb0282b159f1389f80225dc613e (HEAD -> main, feature-issueTwo)
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Thu Nov 21 00:08:46 2024 -0500
+
+    ----Enable/Disable----
+
+    Adds a change listener to input field to verify whether or not the entered input is valid. If valid, the generatePassword button is active, if invalid the button is disabled.
+
+commit 1e5e7566822a8d69d4c4abb53e36044041c77f62 (feature-issueOne)
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Wed Nov 20 23:59:14 2024 -0500
+
+    ----Menu----
+
+    Added a file menu with a about and close option. About sends an about alert and close closes the application.
+
+commit 60120e863d4a12c87ae31d154b32171eef911fa0
+Author: EmiOnGitHub <pikachumybean@gmail.com>
+Date:   Thu Nov 14 15:11:47 2024 -0500
+
