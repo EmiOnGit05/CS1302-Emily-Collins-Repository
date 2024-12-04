@@ -1,8 +1,11 @@
 package edu.westga.cs1302.project3.model;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 
 /**
  * TaskManager for managing a list of tasks.
@@ -12,8 +15,16 @@ import java.util.List;
  */
 public class TaskManager implements Collection<Task> {
 	
-	private String title;
-	private List<Task> taskList;
+	private Map<String, Task> taskList;
+	
+	public TaskManager() {
+		this.taskList = new HashMap<String, Task>();
+	}
+	
+	public Map<String, Task> getTaskList() {
+		return this.taskList;
+	}
+
 	
 	@Override
 	public int size() {
@@ -30,23 +41,23 @@ public class TaskManager implements Collection<Task> {
 		if (task == null) {
 			throw new NullPointerException("Task cannot be null!");
 		} else {
-			return this.taskList.contains(task);
+			return this.taskList.containsValue(task);
 		}
 	}
 
 	@Override
 	public Iterator<Task> iterator() {
-		return this.taskList.iterator();
+		return this.taskList.values().iterator();
 	}
 
 	@Override
 	public Object[] toArray() {
-		return this.taskList.toArray();
+		return this.taskList.values().toArray();
 	}
 
 	@Override
 	public <T> T[] toArray(T[] tasks) {
-		return this.taskList.toArray(tasks);
+		return this.taskList.values().toArray(tasks);
 	}
 
 	@Override
@@ -54,7 +65,7 @@ public class TaskManager implements Collection<Task> {
 		if (task == null) {
 			throw new NullPointerException("Task cannot be null! Please try again");
 		} else {
-			return this.taskList.add(task);
+			return this.taskList.put(task.getTitle(), task) == null;
 		}
 	}
 
@@ -63,7 +74,7 @@ public class TaskManager implements Collection<Task> {
 		if (task == null) {
 			throw new NullPointerException("Task cannot be null! Please try again");
 		} else {
-			return this.taskList.remove(task);
+			return this.taskList.remove(((Task) task).getTitle(), task);
 		}
 	}
 
@@ -74,7 +85,12 @@ public class TaskManager implements Collection<Task> {
 		} else if (tasks.contains(null)) {
 			throw new NullPointerException("Tasks cannot contain null!");
 		} else {
-			return this.taskList.containsAll(tasks);
+			for (Object task : tasks) {
+				if (this.taskList.get(((Task)task).getTitle()) == null) {
+					return false;
+				}
+			}
+			return true;
 		}
 	}
 
@@ -85,7 +101,13 @@ public class TaskManager implements Collection<Task> {
 		} else if (tasks.contains(null)) {
 			throw new NullPointerException("Tasks cannot contain null!");
 		} else {
-			return this.taskList.addAll(tasks);
+			boolean changed = false;
+			for (Task task : tasks) {
+				if (this.add(task)) {
+					changed = true;
+				}
+			}
+			return changed;
 		}
 	}
 
@@ -96,7 +118,13 @@ public class TaskManager implements Collection<Task> {
 		} else if (tasks.contains(null)) {
 			throw new NullPointerException("Tasks cannot contain null!");
 		} else {
-			return this.taskList.removeAll(tasks);
+			boolean changed = false;
+			for (Object task : tasks) {
+				if (this.remove(task)) {
+					changed = true;
+				}
+			}
+			return changed;
 		}
 	}
 
@@ -107,7 +135,7 @@ public class TaskManager implements Collection<Task> {
 		} else if (tasks.contains(null)) {
 			throw new NullPointerException("Tasks cannot contain null!");
 		} else {
-			return this.taskList.retainAll(tasks);
+			throw new UnsupportedOperationException();
 		}
 	}
 
