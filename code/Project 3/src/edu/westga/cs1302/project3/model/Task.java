@@ -25,6 +25,8 @@ public class Task {
 		if (title.isEmpty() || description.isEmpty()) {
 			throw new IllegalArgumentException("Title and/or description cannot be empty!");
 		}
+		this.title = title;
+		this.description = description;
 	}
 	
 	/**
@@ -43,5 +45,10 @@ public class Task {
 	 */
 	public String getDescription() {
 		return this.description;
+	}
+	
+	@Override
+	public String toString() {
+		return this.title;
 	}
 }

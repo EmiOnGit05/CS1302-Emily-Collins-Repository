@@ -17,7 +17,7 @@ public class TaskManagerFile {
 			throw new NullPointerException("Task Manager cannot be null! Please try again.");
 		} else {
 			try (FileWriter writer = new FileWriter(file)) {
-				for (Task currTask : manager.getTaskList().values()) {
+				for (Task currTask : manager.getTaskList()) {
 					if (currTask != null) {
 						writer.write(currTask.getTitle() + "," + currTask.getDescription() + System.lineSeparator());
 					}

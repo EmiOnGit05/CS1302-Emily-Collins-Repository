@@ -1,10 +1,9 @@
 package edu.westga.cs1302.project3.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
 
 /**
@@ -15,13 +14,13 @@ import java.util.Set;
  */
 public class TaskManager implements Collection<Task> {
 	
-	private Map<String, Task> taskList;
+	private List<Task> taskList;
 	
 	public TaskManager() {
-		this.taskList = new HashMap<String, Task>();
+		this.taskList = new ArrayList<Task>();
 	}
 	
-	public Map<String, Task> getTaskList() {
+	public List<Task> getTaskList() {
 		return this.taskList;
 	}
 
@@ -41,23 +40,23 @@ public class TaskManager implements Collection<Task> {
 		if (task == null) {
 			throw new NullPointerException("Task cannot be null!");
 		} else {
-			return this.taskList.containsValue(task);
+			return this.taskList.contains(task);
 		}
 	}
 
 	@Override
 	public Iterator<Task> iterator() {
-		return this.taskList.values().iterator();
+		return this.taskList.iterator();
 	}
 
 	@Override
 	public Object[] toArray() {
-		return this.taskList.values().toArray();
+		return this.taskList.toArray();
 	}
 
 	@Override
 	public <T> T[] toArray(T[] tasks) {
-		return this.taskList.values().toArray(tasks);
+		return this.taskList.toArray(tasks);
 	}
 
 	@Override
@@ -65,7 +64,7 @@ public class TaskManager implements Collection<Task> {
 		if (task == null) {
 			throw new NullPointerException("Task cannot be null! Please try again");
 		} else {
-			return this.taskList.put(task.getTitle(), task) == null;
+			return this.taskList.add(task);
 		}
 	}
 
@@ -74,7 +73,7 @@ public class TaskManager implements Collection<Task> {
 		if (task == null) {
 			throw new NullPointerException("Task cannot be null! Please try again");
 		} else {
-			return this.taskList.remove(((Task) task).getTitle(), task);
+			return this.taskList.remove(task);
 		}
 	}
 
@@ -85,12 +84,7 @@ public class TaskManager implements Collection<Task> {
 		} else if (tasks.contains(null)) {
 			throw new NullPointerException("Tasks cannot contain null!");
 		} else {
-			for (Object task : tasks) {
-				if (this.taskList.get(((Task)task).getTitle()) == null) {
-					return false;
-				}
-			}
-			return true;
+			return this.taskList.containsAll(tasks);
 		}
 	}
 
