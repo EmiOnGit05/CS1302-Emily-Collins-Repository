@@ -26,7 +26,7 @@ public class TaskManagerFile {
 		}
 	}
 
-	public void onFileLoad(File file) throws FileNotFoundException, IOException {
+	public TaskManager onFileLoad(File file) throws FileNotFoundException, IOException {
 		try (Scanner reader = new Scanner(file)) {
 			TaskManager manager = new TaskManager();
 			for (int lineNumber = 1; reader.hasNextLine(); lineNumber++) {
@@ -41,8 +41,11 @@ public class TaskManagerFile {
 				} catch (NullPointerException nullError) {
 					throw new IOException("Unable to create task, either title or description empty! Error on line "
 							+ lineNumber + " : " + strippedLine);
+				} catch (IndexOutOfBoundsException exception) {
+					throw new IOException("Index out of bounds! Please try a different file!");
 				}
 			}
+			return manager;
 		}
 	}
 }
