@@ -9,11 +9,15 @@ import edu.westga.cs1302.project3.model.TaskManager;
 import edu.westga.cs1302.project3.model.TaskManagerFile;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 
 public class ViewModel {
 	private TaskManager manager;
 	private ListProperty<Task> taskList;
+	private StringProperty taskTitle;
+	private StringProperty taskDescription;
 	
 	public ViewModel() {
 		this.manager = new TaskManager();
@@ -22,6 +26,25 @@ public class ViewModel {
 		this.manager.add(taskOne);
 		this.manager.add(taskTwo);
 		this.taskList = new SimpleListProperty<Task>(FXCollections.observableArrayList(this.manager.getTaskList()));
+		this.taskTitle = new SimpleStringProperty();
+		this.taskDescription = new SimpleStringProperty();
+	}
+	
+	public void addTask() {
+		if (this.taskTitle.getValue() == null || this.taskDescription.getValue() == null) {
+			throw new NullPointerException("Title and/or description cannot be null! Please enter text and try again.");
+		}
+		Task task = new Task(this.taskTitle.getValue(), this.taskDescription.getValue());
+		this.taskList.add(task);
+		this.refresh();
+	}
+	
+	public StringProperty getTaskTitle() {
+		return this.taskTitle;
+	}
+	
+	public StringProperty getTaskDescription() {
+		return this.taskDescription;
 	}
 	
 	public TaskManager getTaskManager() {
