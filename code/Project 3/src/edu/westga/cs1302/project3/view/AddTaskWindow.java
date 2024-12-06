@@ -36,7 +36,12 @@ public class AddTaskWindow {
 
     @FXML
     private TextField titleTextField;
-    
+
+	/**
+	 * Binds properties to given viewModel.
+	 * 
+	 * @param vm - the viewmodel being bound to
+	 */
 	public void bindToVM(ViewModel vm) {
 		vm.getTaskTitle().bind(this.titleTextField.textProperty());
 		vm.getTaskDescription().bind(this.descriptionTextArea.textProperty());

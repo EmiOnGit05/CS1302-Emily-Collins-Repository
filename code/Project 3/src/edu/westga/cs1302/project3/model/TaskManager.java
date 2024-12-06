@@ -7,7 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * TaskManager for managing a list of tasks.
  * 
@@ -19,15 +18,26 @@ public class TaskManager implements Collection<Task> {
 	private List<Task> taskList;
 	private Map<String, Task> taskMap;
 	
+	/**
+	 * Constructor for TaskManager.
+	 * 
+	 * @precondition none
+	 * @postcondition this.taskList = new ArrayList/Task/ &&
+	 * this.taskMap = new HashMap/String, Task/
+	 */
 	public TaskManager() {
 		this.taskList = new ArrayList<Task>();
 		this.taskMap = new HashMap<String, Task>();
 	}
 	
+	/**
+	 * Getter for this.taskList
+	 * 
+	 * @return this.taskList
+	 */
 	public List<Task> getTaskList() {
 		return this.taskList;
 	}
-
 	
 	@Override
 	public int size() {

@@ -51,6 +51,9 @@ public class MainWindow {
     
     private ViewModel vm;
     
+    /**
+     * Initialize method.
+     */
     @FXML
     public void initialize() {
     	this.vm = new ViewModel();

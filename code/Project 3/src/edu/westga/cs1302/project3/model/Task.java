@@ -20,7 +20,7 @@ public class Task {
 	 */
 	public Task(String title, String description) {
 		if (title == null || description == null) {
-			throw new IllegalArgumentException("Title and/or description cannot be null!");
+			throw new NullPointerException("Title and/or description cannot be null!");
 		}
 		if (title.isEmpty() || description.isEmpty()) {
 			throw new IllegalArgumentException("Title and/or description cannot be empty!");
