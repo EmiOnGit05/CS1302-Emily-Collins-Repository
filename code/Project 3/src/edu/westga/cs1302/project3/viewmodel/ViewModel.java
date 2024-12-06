@@ -32,10 +32,10 @@ public class ViewModel {
 		return this.taskList;
 	}
 	
-//	public void saveData(File file) throws IOException {
-//		TaskManagerFile fileManager = new TaskManagerFile();
-//		fileManager.onFileSave(manager, file);
-//	}
+	public void saveData(File file) throws IOException {
+		TaskManagerFile fileManager = new TaskManagerFile();
+		fileManager.onFileSave(manager, file);
+	}
 	
 	public void loadData(File file) throws FileNotFoundException, IOException {
 		TaskManagerFile fileManager = new TaskManagerFile();

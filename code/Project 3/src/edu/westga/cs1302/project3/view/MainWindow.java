@@ -57,29 +57,29 @@ public class MainWindow {
 			this.loadData();
 		});
 		
-//		this.fileSaveTasksMenuItem.setOnAction((event) -> {
-//			this.saveData();
-//		});
+		this.fileSaveTasksMenuItem.setOnAction((event) -> {
+			this.saveData();
+		});
 	}
 
 	private void bindToViewModel() {
 		this.taskListView.setItems(this.vm.getTaskList());
 	}
     
-//	private void saveData() {
-//		FileChooser fileChooser = new FileChooser();
-//		Window owner = this.pane.getScene().getWindow();
-//		File selectedFile = fileChooser.showSaveDialog(owner);
-//		if (selectedFile != null) {
-//			try {
-//				this.vm.saveData(selectedFile);
-//			} catch (IOException exception) {
-//				Alert alert = new Alert(AlertType.ERROR);
-//				alert.setContentText("Unable to save to file! Please try again or select a different file!");
-//				alert.showAndWait();
-//			}
-//		}
-//	}
+	private void saveData() {
+		FileChooser fileChooser = new FileChooser();
+		Window owner = this.pane.getScene().getWindow();
+		File selectedFile = fileChooser.showSaveDialog(owner);
+		if (selectedFile != null) {
+			try {
+				this.vm.saveData(selectedFile);
+			} catch (IOException exception) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setContentText("Unable to save to file! Please try again or select a different file!");
+				alert.showAndWait();
+			}
+		}
+	}
 	
 	private void loadData() {
 		FileChooser fileChooser = new FileChooser();
