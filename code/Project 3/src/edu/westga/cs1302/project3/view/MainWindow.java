@@ -88,10 +88,20 @@ public class MainWindow {
 				alert.showAndWait();
 			}
 		});
+		this.removeTaskButton.setOnAction((event) -> {
+			try {
+				this.vm.removeTask();
+			} catch (NullPointerException nullError) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setContentText(nullError.getMessage());
+				alert.showAndWait();
+			}
+		});
 	}
 
 	private void bindToViewModel() {
 		this.taskListView.setItems(this.vm.getTaskList());
+		this.vm.getSelectedTask().bind(this.taskListView.getSelectionModel().selectedItemProperty());
 	}
     
 	private void saveData() {

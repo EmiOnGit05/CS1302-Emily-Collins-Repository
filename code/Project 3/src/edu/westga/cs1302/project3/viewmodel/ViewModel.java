@@ -8,7 +8,9 @@ import edu.westga.cs1302.project3.model.Task;
 import edu.westga.cs1302.project3.model.TaskManager;
 import edu.westga.cs1302.project3.model.TaskManagerFile;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -18,6 +20,7 @@ public class ViewModel {
 	private ListProperty<Task> taskList;
 	private StringProperty taskTitle;
 	private StringProperty taskDescription;
+	private ObjectProperty selectedTask;
 	
 	public ViewModel() {
 		this.manager = new TaskManager();
@@ -28,6 +31,7 @@ public class ViewModel {
 		this.taskList = new SimpleListProperty<Task>(FXCollections.observableArrayList(this.manager.getTaskList()));
 		this.taskTitle = new SimpleStringProperty();
 		this.taskDescription = new SimpleStringProperty();
+		this.selectedTask = new SimpleObjectProperty();
 	}
 	
 	public void addTask() {
@@ -37,6 +41,20 @@ public class ViewModel {
 		Task task = new Task(this.taskTitle.getValue(), this.taskDescription.getValue());
 		this.taskList.add(task);
 		this.refresh();
+	}
+	
+	public void removeTask() {
+		if (this.selectedTask.getValue() == null) {
+			throw new NullPointerException("Please select a task to delete!");
+		} else {
+			this.taskList.remove(this.selectedTask.getValue());
+			this.refresh();
+		}
+		
+	}
+	
+	public ObjectProperty getSelectedTask() {
+		return this.selectedTask;
 	}
 	
 	public StringProperty getTaskTitle() {

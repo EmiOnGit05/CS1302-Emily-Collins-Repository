@@ -53,6 +53,10 @@ public class AddTaskWindow {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setContentText(nullError.getMessage());
 				alert.showAndWait();
+			} catch (IllegalArgumentException illegalError) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setContentText(illegalError.getMessage());
+				alert.showAndWait();
 			}
 		});
 	}
