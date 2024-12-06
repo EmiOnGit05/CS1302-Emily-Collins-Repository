@@ -3,9 +3,13 @@ package edu.westga.cs1302.project3.view;
 import java.io.File;
 import java.io.IOException;
 
+import edu.westga.cs1302.project3.Main;
 import edu.westga.cs1302.project3.model.Task;
 import edu.westga.cs1302.project3.viewmodel.ViewModel;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -14,6 +18,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 /** Codebehind for the Main Window of the application.
@@ -59,6 +65,28 @@ public class MainWindow {
 		
 		this.fileSaveTasksMenuItem.setOnAction((event) -> {
 			this.saveData();
+		});
+		this.addTaskButton.setOnAction((event) -> {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource(Main.ADD_TASK_WINDOW));
+			try {
+				loader.load();
+				Parent parent = loader.getRoot();
+				Scene scene = new Scene(parent);
+				Stage setPropertyStage = new Stage();
+				setPropertyStage.setTitle(Main.ADD_TASK_WINDOW_TITLE);
+				setPropertyStage.setScene(scene);
+				setPropertyStage.initModality(Modality.APPLICATION_MODAL);
+				
+				AddTaskWindow addTaskCodeBehind = (AddTaskWindow) loader.getController();
+				addTaskCodeBehind.bindToVM(this.vm);
+				
+				setPropertyStage.showAndWait();
+			} catch (IOException error) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setContentText("Unable to load add task window! :(");
+				alert.showAndWait();
+			}
 		});
 	}
 

@@ -15,8 +15,11 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-	private static final String WINDOW_TITLE = "Project 3";
-	private static final String GUI_RESOURCE = "view/MainWindow.fxml";
+	public static final String WINDOW_TITLE = "Project 3";
+	public static final String GUI_RESOURCE = "view/MainWindow.fxml";
+	
+	public static final String ADD_TASK_WINDOW_TITLE = "Add Task";
+	public static final String ADD_TASK_WINDOW = "view/AddTaskWindow.fxml";
 	  
 	/** JavaFX entry point.​
 	  *​
