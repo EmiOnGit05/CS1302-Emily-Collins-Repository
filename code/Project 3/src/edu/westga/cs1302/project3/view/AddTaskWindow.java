@@ -36,6 +36,8 @@ public class AddTaskWindow {
     private TextField titleTextField;
     
 	public void bindToVM(ViewModel vm) {
-		
+		this.cancelButton.setOnAction((event) -> {
+			this.pane.getScene().getWindow().hide();
+		});
 	}
 }
