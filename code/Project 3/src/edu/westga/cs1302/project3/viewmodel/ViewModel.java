@@ -39,7 +39,7 @@ public class ViewModel {
 			throw new NullPointerException("Title and/or description cannot be null! Please enter text and try again.");
 		}
 		Task task = new Task(this.taskTitle.getValue(), this.taskDescription.getValue());
-		this.taskList.add(task);
+		this.manager.add(task);
 		this.refresh();
 	}
 	
@@ -47,7 +47,7 @@ public class ViewModel {
 		if (this.selectedTask.getValue() == null) {
 			throw new NullPointerException("Please select a task to delete!");
 		} else {
-			this.taskList.remove(this.selectedTask.getValue());
+			this.manager.remove(this.selectedTask.getValue());
 			this.refresh();
 		}
 		
@@ -85,7 +85,7 @@ public class ViewModel {
 	}
 	
 	public void refresh() {
-		this.manager.getTaskList().clear();
-		this.manager.addAll(this.taskList);
+		this.taskList.clear();
+		this.taskList.addAll(this.manager.getTaskList());
 	}
 }

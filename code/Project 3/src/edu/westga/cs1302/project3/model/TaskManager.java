@@ -2,8 +2,10 @@ package edu.westga.cs1302.project3.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -15,9 +17,11 @@ import java.util.List;
 public class TaskManager implements Collection<Task> {
 	
 	private List<Task> taskList;
+	private Map<String, Task> taskMap;
 	
 	public TaskManager() {
 		this.taskList = new ArrayList<Task>();
+		this.taskMap = new HashMap<String, Task>();
 	}
 	
 	public List<Task> getTaskList() {
@@ -64,7 +68,12 @@ public class TaskManager implements Collection<Task> {
 		if (task == null) {
 			throw new NullPointerException("Task cannot be null! Please try again");
 		} else {
-			return this.taskList.add(task);
+			if (this.taskMap.containsKey(task.getTitle())) {
+				throw new IllegalArgumentException("Cannot add a duplicate task!");
+			} else {
+				this.taskMap.put(task.getTitle(), task);
+				return this.taskList.add(task);
+			}
 		}
 	}
 
@@ -73,6 +82,7 @@ public class TaskManager implements Collection<Task> {
 		if (task == null) {
 			throw new NullPointerException("Task cannot be null! Please try again");
 		} else {
+			this.taskMap.remove(((Task) task).getTitle());
 			return this.taskList.remove(task);
 		}
 	}
